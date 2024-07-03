@@ -25,7 +25,7 @@ const Header = () => {
                         </>
                     }
                     {auth?.user?.organization_id !== null &&
-                        <LinkHeader label="Faturamento" active={route().current('sales')} url="sales" />
+                        <LinkHeader label="Faturamento" active={route().current('faturamento')} url="faturamento" />
                     }
                 </div>
                 <div className="flex items-center justify-end">

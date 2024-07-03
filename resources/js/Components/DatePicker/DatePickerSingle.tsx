@@ -34,15 +34,6 @@ const DatePickerSingle = (props: DatePickerProps) => {
                     'YYYY-MM-DD'
                 ).toDate()
             );
-            router.get(`${props.url}`, {
-                'dt': moment(
-                    moment(
-                        selectedDay?.year + '-' + selectedDay?.month + '-' + selectedDay?.day,
-                        'YYYY-MM-DD'
-                    ).toDate()
-                ).format('YYYYMMDD'),
-                'fl': filialAnalise
-            });
         }
     }, [selectedDay, setDataFiltro, filialAnalise]);
 

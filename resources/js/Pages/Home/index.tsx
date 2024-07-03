@@ -15,12 +15,45 @@ import { useAuthContext } from '@/Contexts';
 import moment from 'moment';
 import { IoInformationCircle } from "react-icons/io5";
 import FiliaisSelector from '@/Components/FiliaisSelector';
+import apiautomagico from "@/bootstrap";
 
 
-const Home = ({ companies, totalsday, saleschart }: any) => {
+const Home = ({ companies }: any) => {
   const { auth } = usePage().props as any;
-  const { filialAnalise } = useAuthContext();
-  // const [totalsByFilial, setTotalsByFilial] = useState(filialAnalise);
+  const { filialAnalise, dataFiltro } = useAuthContext();
+  const [totals, setTotals] = useState<any>([]);
+  const [graficoVendas, setGraficoVendas] = useState<any>([]);
+
+  useEffect(() => {
+    const getTotals = async () => {
+      await apiautomagico.get(`totais?dt=${moment(dataFiltro).format("YYYYMMDD")}&fl=${filialAnalise}`)
+      .then((response) => {
+        const { totals } = response.data.response;
+        setTotals(totals);
+      })
+      .catch((err) => {
+        console.log(err);
+        
+      })
+    };
+    getTotals();
+   },[dataFiltro, filialAnalise]);
+  
+ useEffect(() => {
+  const getGraficoVendas = async () => {
+    await apiautomagico.get(`graficovendas?dt=${moment(dataFiltro).format("YYYYMM")}&fl=${filialAnalise}`)
+    .then((response) => {
+      const { saleschart } = response.data.response;
+      console.log("graficovendas", saleschart);
+      setGraficoVendas(saleschart);
+    })
+    .catch((err) => {
+      console.log(err);
+      
+    })
+  };
+  getGraficoVendas();
+},[dataFiltro, filialAnalise]);
 
   return (
     <AuthenticatedLayout>
@@ -30,41 +63,41 @@ const Home = ({ companies, totalsday, saleschart }: any) => {
         {auth?.user?.organization_id !== null &&
           <>
             <div className="flex items-center justify-start p-1 bg-automa-green-primary rounded-md md:shadow-md shadow-sm border border-automa-green-secundary">
-              <DatePickerSingle url="/" route='dashboard' />
-              <FiliaisSelector data={companies} url="/" />
+              <DatePickerSingle url="/" route='' />
+              <FiliaisSelector data={companies} />
             </div>
-            {!totalsday &&
+            {!totals &&
               <div className="bg-cyan-600 text-white flex items-center justify-start rounded-md shadow-sm md:mt-4 mt-2 py-2 px-3">
                 <IoInformationCircle size={25} /><span className="text-sm ml-2">Não há dados a serem mostrados no momento</span>
               </div>
             }
-            {totalsday &&
+            {totals &&
               <div className="grid md:gap-4 gap-2 md:grid-cols-4 grid-cols-2 md:mt-4 mt-2">
-                <Kpi icon={<AiOutlineLineChart />} iconcolor="text-blue-700" title="Meta" value={MoneyptBR(totalsday?.valmeta)} bgcolor="bg-blue-200" textcolor="text-blue-700" />
-                <Kpi icon={<GiPayMoney />} iconcolor="text-green-700" title="Faturamento" value={MoneyptBR(totalsday?.valven)} bgcolor="bg-green-200" textcolor="text-green-700" />
-                <Kpi icon={<FaMoneyBillTrendUp />} iconcolor="text-yellow-700" title="Val. Juros" value={MoneyptBR(totalsday?.valjur)} bgcolor="bg-green-200" textcolor="text-green-700" />
-                <Kpi icon={<FaMoneyBillTrendUp />} iconcolor="text-yellow-700" title="Val. Ina." value={MoneyptBR(totalsday?.valina)} bgcolor="bg-green-200" textcolor="text-green-700" />
+                <Kpi icon={<AiOutlineLineChart />} iconcolor="text-blue-700" title="Meta" value={MoneyptBR(totals?.valmeta)} bgcolor="bg-blue-200" textcolor="text-blue-700" />
+                <Kpi icon={<GiPayMoney />} iconcolor="text-green-700" title="Faturamento" value={MoneyptBR(totals?.valven)} bgcolor="bg-green-200" textcolor="text-green-700" />
+                <Kpi icon={<FaMoneyBillTrendUp />} iconcolor="text-yellow-700" title="Val. Juros" value={MoneyptBR(totals?.valjur)} bgcolor="bg-green-200" textcolor="text-green-700" />
+                <Kpi icon={<FaMoneyBillTrendUp />} iconcolor="text-yellow-700" title="Val. Ina." value={MoneyptBR(totals?.valina)} bgcolor="bg-green-200" textcolor="text-green-700" />
               </div>
             }
-            {totalsday &&
+            {!totals &&
               <div className="grid md:gap-4 gap-2 md:grid-cols-4 grid-cols-2 md:mt-4 mt-2">
                 <div className='bg-white p-4 shadow-md rounded-md'>
-                  <Progress value={totalsday?.permet} colorBar="#FF5003" colorText="#FF5003" title='Meta' height={100} />
+                  <Progress value={totals?.permet} colorBar="#FF5003" colorText="#FF5003" title='Meta' height={100} />
                 </div>
                 <div className='bg-white p-4 shadow-md rounded-md'>
-                  <Progress value={totalsday?.margem} colorBar="#CA0156" colorText="#CA0156" title='Margem' height={100} />
+                  <Progress value={totals?.margem} colorBar="#CA0156" colorText="#CA0156" title='Margem' height={100} />
                 </div>
                 <div className='bg-white p-4 shadow-md rounded-md'>
-                  <Progress value={totalsday?.perjur} colorBar="#0F52BA" colorText="#0F52BA" title='Juros' height={100} />
+                  <Progress value={totals?.perjur} colorBar="#0F52BA" colorText="#0F52BA" title='Juros' height={100} />
                 </div>
                 <div className='bg-white p-4 shadow-md rounded-md'>
-                  <Progress value={totalsday?.perina} colorBar="#FFAE08" colorText="#FFAE08" title='Inadimplência' height={100} />
+                  <Progress value={totals?.perina} colorBar="#FFAE08" colorText="#FFAE08" title='Inadimplência' height={100} />
                 </div>
               </div>
             }
-            {saleschart?.length > 0 &&
+            {graficoVendas?.length > 0 &&
               <div className="md:mt-4 mt-2 p-2 flex flex-col bg-white rounded-md shadow-md">
-                <CHFaturamento data={saleschart} />
+                <CHFaturamento data={graficoVendas} />
               </div>
             }
           </>

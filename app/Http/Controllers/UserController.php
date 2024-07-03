@@ -58,6 +58,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $org = auth()->user()->organization_id;
         $messages = [
             'required' => 'O campo :attribute deve ser preenchido',
             'email' => 'Endereço de e-mail inválido',
@@ -68,7 +69,7 @@ class UserController extends Controller
         $request->validate(
             [
                 'organization_id' => 'required',
-                'company_id' => $data['organization_id'] !== null ? 'required' : '',
+                'company_id' => $org !== null ? 'required' : '',
                 'name' => 'required',
                 'email' => 'required|email|unique:users',
                 'roles' => 'required',

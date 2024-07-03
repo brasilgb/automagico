@@ -58,7 +58,6 @@ class JsonToDatabaseController extends Controller
             foreach ($request->dbdata as $dbdata) {
                 $dataven[] = [
                     "organization_id" => $compop->first()->organization_id,
-                    "company_id" => $compid,
                     "key" => $dbdata['resumo_cnpj'] . $dbdata['resumo_datmvt'],
                     "cnpj" => $dbdata['resumo_cnpj'],
                     "filial" => $dbdata['resumo_codfil'],
@@ -99,7 +98,6 @@ class JsonToDatabaseController extends Controller
             foreach ($request->dbdata as $dbdata) {
                 $datass[] = [
                     "organization_id" => $compop->first()->organization_id,
-                    "company_id" => $compid,
                     "key" => $dbdata['assoc_cnpj'] . $dbdata['assoc_datmvt'] . $dbdata['assoc_ass'],
                     "cnpj" => $dbdata['assoc_cnpj'],
                     "filial" => $dbdata['assoc_filial'],
@@ -131,18 +129,15 @@ class JsonToDatabaseController extends Controller
         }
 
         if ($request->type ===  "total") {
-            foreach (array_slice($request->dbdata, 0, 1) as $fdt) {
-                $dataKey = $fdt["total_cnpj"] . $fdt["total_datatu"];
-            }
             $salesdesc = Total::where('cnpj', $request->dbdata[0]["total_cnpj"])->orderByDesc('id');
             $compop = Company::where('cnpj', $request->dbdata[0]["total_cnpj"]);
             $compid = $compop->first()->id;
             foreach ($request->dbdata as $dbdata) {
                 $datatot[] = [
                     "organization_id" => $compop->first()->organization_id,
-                    "company_id" => $compid,
                     "key" => $dbdata['total_cnpj'] . $dbdata['total_datatu'],
                     "cnpj" => $dbdata['total_cnpj'],
+                    "filial" => $dbdata['total_filial'],
                     "datatu" => $dbdata['total_datatu'],
                     "valdev" => $dbdata['total_valdev'],
                     "valven" => $dbdata['total_valven'],

@@ -36,12 +36,12 @@ interface ButtonsProps {
 export const AnaliseButton = ({ onclick, label, active, title }: ButtonsProps) => {
   const { dataFiltro, filialAnalise } = useAuthContext();
     return (
-        <Link
-            href={`/${onclick}?td=${moment(dataFiltro).format('YYYYMMDD')}&fl=${filialAnalise}`}
+        <button
+            onClick={onclick}
             className={`px-3 py-1.5 w-48 text-xs uppercase font-bold shadow border border-white ${active ? 'text-gray-50 bg-automa-green-secundary' : 'bg-automa-green-primary/60 text-gray-50'} hover:bg-automa-green-secundary hover:text-gray-50 rounded-md transition-colors duration-300`}
             title={title}>
             {label}
-        </Link>
+        </button>
     )
 }
 

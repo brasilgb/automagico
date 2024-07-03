@@ -1,19 +1,17 @@
 import { useAuthContext } from '@/Contexts';
 import { router, usePage } from '@inertiajs/react';
-import moment from 'moment';
 import React, { useEffect } from 'react'
 
 interface FiliaisProps {
     data: any;
-    url: any;
 }
 
-const FiliaisSelector = (props: FiliaisProps) => {
+const FiliaisSelector = ({data}: FiliaisProps) => {
     const { auth } = usePage().props as any;
     const companyUser = auth.user?.company_id;
     const { setFilialAnalise, filialAnalise, dataFiltro } = useAuthContext();
 
-    const onlyOneFilial = (props.data.filter((f: any) => (f.subnumber == companyUser)));
+    const onlyOneFilial = (data.filter((f: any) => (f.subnumber == companyUser)));
 
     useEffect(() => {
         if (companyUser) {
@@ -22,10 +20,6 @@ const FiliaisSelector = (props: FiliaisProps) => {
     }, [companyUser]);
 
     const handleDataByFilial = (value:any) => {
-        router.get(`${props.url}`, {
-            'dt': moment(dataFiltro).format('YYYYMMDD'),
-            'fl': value
-        });
         setFilialAnalise(value);
     }
 
@@ -40,8 +34,8 @@ const FiliaisSelector = (props: FiliaisProps) => {
                     value={filialAnalise}
                     onChange={(e: any) => handleDataByFilial(e.target.value)}
                 >
-                    {props.data?.map((filial: any, idx: number) => (
-                        <option value={filial.subnumber}>{filial.subname}</option>
+                    {data?.map((filial: any, idx: number) => (
+                        <option key={idx} value={filial.subnumber}>{filial.subname}</option>
                     ))}
                 </select>
             }
