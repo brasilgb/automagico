@@ -104,7 +104,7 @@ const addUser = ({ organizations }: any) => {
                         >
                           <option value="">Selecione a filial</option>
                           {organizations[0].company?.map((comp: any, idx: number) => (
-                            <option value={comp.id}>{comp.altername}</option>
+                            <option value={comp.subnumber}>{comp.altername}</option>
                           ))}
                         </select>
                         {errors.company_id && (

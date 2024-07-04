@@ -50,7 +50,7 @@ const Association = () => {
             <TableHead>Representa</TableHead>
           </TableRow>
         </TableHeader>
-        <TableHeader>
+        {/* <TableHeader>
           {autoMagicoAssociation.filter((total: any) => (total.assoc == 'XX')).map((assoc: any, idx: number) => (
             <TableRow className={`${idx % 2 === 0 ? 'bg-gray-500' : 'bg-gray-100'}`}>
               <TableHead>Total</TableHead>
@@ -63,10 +63,10 @@ const Association = () => {
               <TableHead>{ValuePercent(assoc.representa)}</TableHead>
             </TableRow>
           ))}
-        </TableHeader>
+        </TableHeader> */}
         <TableBody>
-          {autoMagicoAssociation.filter((total: any) => (total.assoc != 'XX')).map((assoc: any, idx: number) => (
-            <TableRow className={`${idx % 2 === 0 ? 'bg-gray-50' : 'bg-gray-100'}`}>
+          {autoMagicoAssociation.map((assoc: any, idx: number) => (
+            <TableRow className={`${assoc.assoc == 'XX' && 'bg-gray-500 !text-gray-50'} ${idx % 2 === 0 ? 'bg-gray-50' : 'bg-gray-100'} text-gray-500`}>
               <TableCell>{assoc.id}</TableCell>
               <TableCell>{assoc.assoc}</TableCell>
               <TableCell>{assoc.descassoc}</TableCell>

@@ -24,11 +24,11 @@ const FiliaisSelector = ({data}: FiliaisProps) => {
     }
 
     return (
-        <div className='w-52 rounded-md ml-2 bg-gray-50'>
+        <div className='w-52 rounded-md bg-gray-50'>
             {companyUser !== null
-                ? <div className='rounded-md p-[5px] border-none w-full text-base text-gray-600'>{onlyOneFilial[0].subname}</div>
+                ? <div className='rounded-md p-[5px] border-none w-full text-base text-gray-500 font-medium'>{onlyOneFilial[0]?.subname}</div>
                 : <select
-                    className='rounded-md p-[5px] border-none w-full text-base text-gray-600'
+                    className='rounded-md p-[5px] border-none w-full text-base text-gray-500 font-medium'
                     name="filial"
                     id="filial"
                     value={filialAnalise}

@@ -8,7 +8,7 @@ import { IoHome, IoReload } from "react-icons/io5";
 import { Link, router } from "@inertiajs/react";
 
 interface DatePickerProps {
-    url: any;
+  
     route: string;
 }
 
@@ -17,10 +17,12 @@ const DatePickerSingle = (props: DatePickerProps) => {
     const {
         setDataFiltro,
         dataFiltro,
-        filialAnalise
+        filialAnalise,
+        setFilialAnalise,
+        selectedDay, 
+        setSelectedDay
     } = useAuthContext();
-    const [selectedDay, setSelectedDay] = useState<DayValue>(null);
-
+    
     const formatInputValue = () => {
         if (!selectedDay) return '';
         return `${('0' + selectedDay.day).slice(-2) + '/' + ('0' + selectedDay.month).slice(-2) + '/' + selectedDay.year}`;
@@ -38,16 +40,22 @@ const DatePickerSingle = (props: DatePickerProps) => {
     }, [selectedDay, setDataFiltro, filialAnalise]);
 
     const handleSelectedDay = () => {
-        setDataFiltro(moment().format("YYYYMMDD"));
+        setDataFiltro(moment().format("YYYY-MM-DD"));
+        setSelectedDay({
+            "day": parseInt(moment().format("DD")),
+            "month": parseInt(moment().format("MM")),
+            "year": parseInt(moment().format("YYYY"))
+        });
+        setFilialAnalise(1);
     }
 
     return (
         <div className="flex">
-            <Link
-                href={route(`dashboard`)}
+            {/* <Link
+                href={route(props.route)}
                 className="text-sm p-1 font-bold bg-gray-50 rounded-md shadow-md border border-white text-gray-500 mr-1 cursor-pointer">
                 <IoHome size={22} />
-            </Link>
+            </Link> */}
             <div className="text-sm p-1 font-bold bg-gray-50 rounded-md shadow-md border border-white text-gray-500 mr-1 cursor-pointer">
                 <IoReload size={22} onClick={() => handleSelectedDay()} />
             </div>

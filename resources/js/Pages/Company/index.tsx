@@ -1,23 +1,32 @@
 import { AddButton, DeleteButton, EditButton } from "@/Components/Buttons"
 import { Card, CardBody, CardContainer, CardFooter, CardHeader, CardHeaderContent } from "@/Components/Card"
-import Filiais from "@/Components/Empresas/Filiais"
 import FlashMessage from "@/Components/FlashMessage"
 import InputSearch from "@/Components/InputSearch"
 import { BreadCrumbTop, HeaderContent, TitleTop } from "@/Components/PageTop"
 import Pagination from "@/Components/Pagination"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/Components/Table"
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
-import { colorsStatus, statusValueByLabel } from "@/Utils/functions"
+import { statusValueByLabel } from "@/Utils/functions"
 import { maskCnpj, maskInscEstadual } from "@/Utils/mask"
-import { Head, usePage } from '@inertiajs/react'
+import { Head } from '@inertiajs/react'
 import moment from "moment"
 import React, { Fragment } from 'react'
 import { IoIosBusiness } from "react-icons/io"
-import { IoPeopleSharp } from "react-icons/io5"
 
 const Company = ({ companies }: any) => {
-    const { flash } = usePage().props;
 
+    const colorsStatus = (status: string) => {
+        switch (status) {
+            case 'active':
+                return "bg-green-600/50 border border-green-600 text-green-800 text-xs uppercase";
+            case 'waiting':
+                return "bg-sky-600/50 border border-sky-600 text-sky-800 text-xs uppercase";
+            case 'suspended':
+                return "bg-orange-600/50 border border-orange-600 text-orange-800 text-xs uppercase";
+            case 'canceled':
+                return "bg-red-600/50 border border-red-600 text-red-800 text-xs uppercase";
+        }
+    }
     return (
         <AuthenticatedLayout>
             <Head title="Dashboard" />

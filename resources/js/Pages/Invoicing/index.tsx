@@ -13,6 +13,7 @@ import { useAuthContext } from "@/Contexts"
 import Association from "./Association"
 import Sales from "./Sales"
 import FiliaisSelector from "@/Components/FiliaisSelector"
+import AnaliseRede from "@/Components/AnaliseRede"
 
 const Invoicing = ({ companies }: any) => {
   const { alteredAnalise, setAlteredAnalise } = useAuthContext();
@@ -24,8 +25,9 @@ const Invoicing = ({ companies }: any) => {
         <HeaderContent>
           <div className="flex flex-col w-full">
             <div className="flex md:flex-row flex-col gap-2 items-center justify-auto p-1 bg-automa-green-primary rounded-md shadow-md border border-automa-green-secundary w-full">
-              <DatePickerSingle url="sales" route={""} />
+              <DatePickerSingle route='faturamento' />
               <FiliaisSelector data={companies} />
+              <AnaliseRede />
             </div>
             <div className="flex md:items-center items-start justify-start md:flex-1 p-2 md:gap-6 gap-2 w-full overflow-x-auto bg-gray-100 mt-2 rounded-md shadow">
               <AnaliseButton label="Faturamento" onclick={() => setAlteredAnalise('faturamento')} active={alteredAnalise === 'faturamento' ? true : false} />

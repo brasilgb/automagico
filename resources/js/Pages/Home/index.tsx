@@ -16,6 +16,7 @@ import moment from 'moment';
 import { IoInformationCircle } from "react-icons/io5";
 import FiliaisSelector from '@/Components/FiliaisSelector';
 import apiautomagico from "@/bootstrap";
+import AnaliseRede from "@/Components/AnaliseRede";
 
 
 const Home = ({ companies }: any) => {
@@ -60,9 +61,10 @@ const Home = ({ companies }: any) => {
       <main className=''>
         {auth?.user?.organization_id !== null &&
           <>
-            <div className="flex items-center justify-start p-1 bg-automa-green-primary rounded-md md:shadow-md shadow-sm border border-automa-green-secundary">
-              <DatePickerSingle url="/" route='' />
+            <div className="flex items-center justify-start p-1 bg-automa-green-primary rounded-md md:shadow-md shadow-sm border border-automa-green-secundary gap-4">
+              <DatePickerSingle route='dashboard' />
               <FiliaisSelector data={companies} />
+              <AnaliseRede />
             </div>
             {!totals &&
               <div className="bg-cyan-600 text-white flex items-center justify-start rounded-md shadow-sm md:mt-4 mt-2 py-2 px-3">

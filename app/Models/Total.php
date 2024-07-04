@@ -37,5 +37,8 @@ class Total extends Model
     //     // static::addGlobalScope(new OrganizationScope);
     //     static::addGlobalScope(new CompanyScope);
     // }
-    
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }

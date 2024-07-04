@@ -1,4 +1,4 @@
-import { DayRange } from "@hassanmojab/react-modern-calendar-datepicker";
+import { DayRange, DayValue } from "@hassanmojab/react-modern-calendar-datepicker";
 import moment, { now } from "moment";
 import { createContext, useContext, useState } from "react";
 
@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [dataFiltro, setDataFiltro] = useState<any>(moment().format("YYYY-MM-DD"));
     const [alteredAnalise, setAlteredAnalise] = useState<string>('faturamento');
     const [filialAnalise, setFilialAnalise] = useState('1');
-    
+    const [selectedDay, setSelectedDay] = useState<DayValue>(null);
     // const [executeRange, setExecuteRange] = useState<boolean>(false);
     // const [selectedRange, setSelectedRange] = useState<DayRange>({
     //     from: {
@@ -41,7 +41,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 alteredAnalise, 
                 setAlteredAnalise,
                 filialAnalise, 
-                setFilialAnalise
+                setFilialAnalise,
+                selectedDay, 
+                setSelectedDay
             }}
         >
             {children}

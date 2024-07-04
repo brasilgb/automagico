@@ -48,7 +48,6 @@ const Sales = () => {
   };
   getAutoMagicoSales();
  },[dataFiltro, filialAnalise]);
-console.log(autoMagicoSales);
 
   return (
     <>

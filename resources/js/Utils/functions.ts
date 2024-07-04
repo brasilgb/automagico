@@ -9,12 +9,10 @@ const statusUserByValue = (value: any) => {
 
 const roleUserByValue = (value: any) => {
     switch (value) {
-        case 1:
+        case 'admin':
             return "Administrador";
-        case 2:
+        case 'user':
             return "Usuário";
-        case 3:
-            return "Técnico";
     }
 };
 
@@ -31,23 +29,11 @@ const statusValueByLabel = (value: any) => {
     }
 };
 
-const colorsStatus = (status: string) => {
-    switch (status) {
-        case 'active':
-            return "bg-green-600";
-        case 'waiting':
-            return "bg-sky-600";
-        case 'suspended':
-            return "bg-orange-600";
-        case 'canceled':
-            return "bg-red-600";
-    }
-}
+
 
 
 export {
     statusUserByValue,
     roleUserByValue,
-    statusValueByLabel,
-    colorsStatus
+    statusValueByLabel
 };

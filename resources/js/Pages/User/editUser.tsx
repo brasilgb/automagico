@@ -84,12 +84,13 @@ const editUser = ({user, organizations}: any) => {
                       <div className="flex flex-col col-span-2 relative">
                         <label
                           className="label-form"
-                          htmlFor="Organização"
+                          htmlFor="company_id"
                         >
                           Filial
                         </label>
                         <select
                           name="company_id"
+                          value={data.company_id}
                           id="company_id" onChange={(e) => {
                             setData(
                               "company_id",
@@ -101,7 +102,7 @@ const editUser = ({user, organizations}: any) => {
                         >
                           <option value="">Selecione a filial</option>
                           {organizations[0].company?.map((comp: any, idx: number) => (
-                            <option value={comp.id}>{comp.altername}</option>
+                            <option value={comp.subnumber}>{comp.altername}</option>
                           ))}
                         </select>
                         {errors.company_id && (

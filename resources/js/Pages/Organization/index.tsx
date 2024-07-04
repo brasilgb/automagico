@@ -6,7 +6,7 @@ import { BreadCrumbTop, HeaderContent, TitleTop } from '@/Components/PageTop'
 import Pagination from '@/Components/Pagination'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/Components/Table'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
-import { colorsStatus, statusValueByLabel } from '@/Utils/functions'
+import { statusValueByLabel } from '@/Utils/functions'
 import { Head, usePage } from '@inertiajs/react'
 import moment from 'moment'
 import React, { Fragment, useState } from 'react'
@@ -14,7 +14,18 @@ import { SlOrganization } from "react-icons/sl";
 
 const Organization = ({ organizations }: any) => {
     const { flash } = usePage().props as any;
-
+    const colorsStatus = (status: string) => {
+        switch (status) {
+            case 'active':
+                return "bg-green-600/50 border border-green-600 text-green-800 text-xs uppercase";
+            case 'waiting':
+                return "bg-sky-600/50 border border-sky-600 text-sky-800 text-xs uppercase";
+            case 'suspended':
+                return "bg-orange-600/50 border border-orange-600 text-orange-800 text-xs uppercase";
+            case 'canceled':
+                return "bg-red-600/50 border border-red-600 text-red-800 text-xs uppercase";
+        }
+    }
     return (
         <AuthenticatedLayout>
             <Head title="Organizações" />

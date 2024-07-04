@@ -33,10 +33,10 @@ const SideMenu = (props: SideMenuProps) => {
 
             {auth?.user?.company_id !== null &&
                 <SideLink
-                    url={route('sales')}
+                    url={route('faturamento')}
                     icon={<GiReceiveMoney size={24} />}
                     openSide={props.openSide}
-                    active={route().current('sales')}
+                    active={route().current('faturamento')}
                     label="Faturamento"
                 />
             }
@@ -49,13 +49,13 @@ const SideMenu = (props: SideMenuProps) => {
                 label="Aparência"
             /> */}
 
-            <SideLink
+            {/* <SideLink
                 url={route('users.index')}
                 icon={<IoPerson size={24} />}
                 openSide={props.openSide}
                 active={route().current('users.*')}
                 label="Usuários"
-            />
+            /> */}
         </ul>
     )
 }
