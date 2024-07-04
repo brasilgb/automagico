@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('associations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('organization_id')->nullable()->constrained();
-            $table->foreignId('company_id')->nullable()->constrained();
             $table->string('key')->index();
             $table->string('cnpj');
-            $table->string('filial');
+            $table->integer('filial');
             $table->string('dtvenda');
             $table->string('assoc');
             $table->string('descassoc');

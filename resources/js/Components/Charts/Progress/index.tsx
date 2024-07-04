@@ -46,7 +46,7 @@ const Progress = ({
       text: '',
     },
     subtitle: {
-      text: `<div style='font-size: ${sizeWindow > 1900 ? '25px' : '20px'}; font-weight: bold; color: ${colorText}'>${value.replace('.', ',')}%</div> <span style='font-size: ${sizeWindow > 1900 ? '14px' : '12px'}; font-weight: bold;'>${title}</span>`,
+      text: `<div style='font-size: ${sizeWindow > 1900 ? '25px' : '20px'}; font-weight: bold; color: ${colorText}'>${value}%</div> <span style='font-size: ${sizeWindow > 1900 ? '14px' : '12px'}; font-weight: bold;'>${title}</span>`,
       align: 'center',
       verticalAlign: 'middle',
       style: {
@@ -98,7 +98,7 @@ const Progress = ({
               },
             },
             subtitle: {
-              text: `<div style='font-size: 12px;font-weight: bold; color: ${colorText}'>${value.replace('.', ',')}%</div> <span style='font-size: 10px; font-weight: bold;'>${title}</span>`,
+              text: `<div style='font-size: 12px;font-weight: bold; color: ${colorText}'>${value}%</div> <span style='font-size: 10px; font-weight: bold;'>${title}</span>`,
             },
             credits: {
               enabled: false,

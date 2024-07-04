@@ -65,16 +65,16 @@ console.log(autoMagicoSales);
           </TableRow>
         </TableHeader>
         <TableHeader>
-        {totals.map((total: any, idx: number) => (
-            <TableRow className={`${idx % 2 === 0 ? 'bg-gray-500' : 'bg-gray-100'}`}>
+        {totals &&
+            <TableRow className='bg-gray-500'>
               <TableHead>Total</TableHead>
-              <TableHead>{moment(total?.datatu).format("DD/MM/YYYY")}</TableHead>
-              <TableHead>{MoneyptBR(total?.valmeta)}</TableHead>
-              <TableHead>{MoneyptBR(total?.valven)}</TableHead>
-              <TableHead>{MoneyptBR(total?.margem)}</TableHead>
-              <TableHead>{ValuePercent(total?.permet)}</TableHead>
+              <TableHead>{moment(totals?.datatu).format("DD/MM/YYYY")}</TableHead>
+              <TableHead>{MoneyptBR(totals?.valmeta)}</TableHead>
+              <TableHead>{MoneyptBR(totals?.valven)}</TableHead>
+              <TableHead>{MoneyptBR(totals?.margem)}</TableHead>
+              <TableHead>{ValuePercent(totals?.permet)}</TableHead>
             </TableRow>
-          ))}
+          }
         </TableHeader>
         <TableBody>
           {autoMagicoSales.map((sale: any, idx: number) => (

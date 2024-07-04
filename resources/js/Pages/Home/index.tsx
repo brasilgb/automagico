@@ -44,7 +44,6 @@ const Home = ({ companies }: any) => {
     await apiautomagico.get(`graficovendas?dt=${moment(dataFiltro).format("YYYYMM")}&fl=${filialAnalise}`)
     .then((response) => {
       const { saleschart } = response.data.response;
-      console.log("graficovendas", saleschart);
       setGraficoVendas(saleschart);
     })
     .catch((err) => {
@@ -59,7 +58,6 @@ const Home = ({ companies }: any) => {
     <AuthenticatedLayout>
       <Head title="Dashboard" />
       <main className=''>
-        <h1>{companies.length}-{filialAnalise}</h1>
         {auth?.user?.organization_id !== null &&
           <>
             <div className="flex items-center justify-start p-1 bg-automa-green-primary rounded-md md:shadow-md shadow-sm border border-automa-green-secundary">
@@ -79,7 +77,7 @@ const Home = ({ companies }: any) => {
                 <Kpi icon={<FaMoneyBillTrendUp />} iconcolor="text-yellow-700" title="Val. Ina." value={MoneyptBR(totals?.valina)} bgcolor="bg-green-200" textcolor="text-green-700" />
               </div>
             }
-            {!totals &&
+            {totals &&
               <div className="grid md:gap-4 gap-2 md:grid-cols-4 grid-cols-2 md:mt-4 mt-2">
                 <div className='bg-white p-4 shadow-md rounded-md'>
                   <Progress value={totals?.permet} colorBar="#FF5003" colorText="#FF5003" title='Meta' height={100} />

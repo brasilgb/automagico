@@ -18,7 +18,7 @@ class AssociationController extends Controller
         if($wquery){
             $association = Association::where('dtvenda', $request->dt)->where('filial', $request->fl)->get();
         }else{
-            $lastDate = Association::where('filial', $request->fl)->where('assoc', '<>', "XX")->orderBy('dtvenda', 'DESC')->first();
+            $lastDate = Association::where('filial', $request->fl)->orderBy('dtvenda', 'DESC')->first();
             if ($lastDate !== null) 
             $association = Association::where('dtvenda', $lastDate->dtvenda)->where('filial', $request->fl)->get();
         }
