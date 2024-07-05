@@ -1,0 +1,1 @@
+const a=[{value:"admin",label:"Administrador"},{value:"user",label:"Usuário"}],e=[{value:"active",label:"Ativo"},{value:"inactive",label:"Inativo"}],l=[{value:"active",label:"Ativo"},{value:"waiting",label:"Aguardando"},{value:"suspended",label:"Suspenso"},{value:"canceled",label:"Cancelado"}];export{e as a,a as r,l as s};
