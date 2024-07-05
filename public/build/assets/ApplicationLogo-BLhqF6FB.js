@@ -1,1 +1,0 @@
-import{q as p,j as i}from"./app-2n679auc.js";const r=({className:n})=>{var s,t;const{conf:o=[]}=p().props;return i.jsx("div",{className:n,children:i.jsx("img",{src:`/storage/images/${(s=o[0])!=null&&s.logo?(t=o[0])==null?void 0:t.logo:"automahost.png"}`,alt:"Logo"})})},g=r;export{g as A};
