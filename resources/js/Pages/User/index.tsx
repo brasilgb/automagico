@@ -54,7 +54,7 @@ const User = ({ users }: any) => {
                         </CardHeader>
                         <FlashMessage message={'flash'} />
                         <CardBody className="p-1">
-                        <Table className="bg-megb-blue-secundary w-full">
+                            <Table className="bg-megb-blue-secundary w-full">
                                 <TableHeader>
                                     <TableRow>
                                         <TableHead>#</TableHead>
@@ -70,7 +70,7 @@ const User = ({ users }: any) => {
                                 <TableBody>
                                     {users.data.map((user: any, idx: number) => (
                                         <Fragment key={user?.id}>
-                                           <TableRow className={`${idx % 2 === 0 ? 'bg-gray-50' : 'bg-gray-100'}`}>
+                                            <TableRow className={`${idx % 2 === 0 ? 'bg-gray-50' : 'bg-gray-100'}`}>
                                                 <TableCell>{user?.id}</TableCell>
                                                 <TableCell>
                                                     {user?.organization?.name}
@@ -111,9 +111,11 @@ const User = ({ users }: any) => {
                                 </TableBody>
                             </Table>
                         </CardBody>
-                        <CardFooter>
-                            <Pagination data={users} />
-                        </CardFooter>
+                        {users.length > 15 &&
+                            <CardFooter>
+                                <Pagination data={users} />
+                            </CardFooter>
+                        }
                     </CardContainer>
                 </Card>
             </main>

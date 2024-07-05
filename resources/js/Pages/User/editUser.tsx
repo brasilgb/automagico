@@ -99,6 +99,7 @@ const editUser = ({user, organizations}: any) => {
                             handleSearch(e.target.value)
                           }}
                           className="input-form"
+                          disabled={auth.user.company_id ? true : false}
                         >
                           <option value="">Selecione a filial</option>
                           {organizations[0].company?.map((comp: any, idx: number) => (
@@ -327,6 +328,7 @@ const editUser = ({user, organizations}: any) => {
                           setData("roles", e.target.value)
                         }
                         className="input-form"
+                        disabled={auth.user.company_id ? true : false}
                       >
                         <option value="">
                           Selecione a função
@@ -363,6 +365,7 @@ const editUser = ({user, organizations}: any) => {
                           )
                         }
                         className="input-form"
+                        disabled={auth.user.company_id ? true : false}
                       >
                         <option value="">
                           Selecione o status
