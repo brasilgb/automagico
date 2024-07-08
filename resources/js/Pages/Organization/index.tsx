@@ -29,7 +29,6 @@ const Organization = ({ organizations }: any) => {
     return (
         <AuthenticatedLayout>
             <Head title="Organizações" />
-
             <Card>
                 <HeaderContent>
                     <TitleTop>

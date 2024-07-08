@@ -2,10 +2,9 @@ import { useAuthContext } from "@/Contexts";
 import DatePicker, { DayValue } from "@hassanmojab/react-modern-calendar-datepicker"
 import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
 import moment from "moment";
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { CustomLocale } from "./LocaleCalendar";
 import { IoHome, IoReload } from "react-icons/io5";
-import { Link, router } from "@inertiajs/react";
 
 interface DatePickerProps {
   
@@ -64,7 +63,7 @@ const DatePickerSingle = (props: DatePickerProps) => {
                 onChange={setSelectedDay}
                 inputPlaceholder={`${moment(dataFiltro).format("DD/MM/YYYY")}`} // placeholder
                 formatInputText={formatInputValue} // format value
-                inputClassName="!text-sm !font-bold !bg-gray-50 !rounded-md !shadow-md !border !border-white !text-gray-500" // custom class
+                inputClassName="w-32 !text-sm !font-bold !bg-gray-50 !rounded-md !shadow-md !border !border-white !text-gray-500" // custom class
                 calendarClassName="responsive-calendar"
                 shouldHighlightWeekends
                 locale={CustomLocale}

@@ -1,5 +1,5 @@
 import { useAuthContext } from "@/Contexts";
-
+import { PiNetwork, PiShareNetworkBold } from "react-icons/pi";
 const AnaliseRede = () => {
     const { setFilialAnalise } = useAuthContext();
     const handleAnaliseRede = () => {
@@ -9,9 +9,10 @@ const AnaliseRede = () => {
     return (
         <button
         onClick={() => handleAnaliseRede()}
-            className="bg-gray-50 rounded-md h-[34px] px-3 border border-white hover:bg-gray-50/80 shadow-md transition-colors duration-300"
+            className="bg-gray-50 text-gray-500 flex items-center gap-2 rounded-md h-[34px] px-3 border border-white hover:bg-gray-50/80 shadow-md transition-colors duration-300"
         >
-            <span className="text-gray-500 font-medium">Analise da Rede</span>
+            <PiShareNetworkBold size={20} />
+            <span className="font-medium hidden md:block">Analise da Rede</span>
         </button>
     )
 }

@@ -13,10 +13,45 @@
     .btn-login {
         @apply flex items-center justify-center rounded-md border-2 shadow-md bg-blue-700 hover:bg-blue-600 border-white px-5 py-2 font-medium text-base text-gray-100 transition-colors w-full;
     }
+
     .label-form {
         @apply text-sm text-gray-500 font-medium;
     }
+
     .input-form {
         @apply rounded-md p-2 bg-transparent text-base text-gray-600 border border-gray-300;
     }
 }
+    .DatePicker {
+    z-index: 39 !important;
+}
+.responsive-calendar {
+    /* by setting font-size, all the elements will correspond */
+    font-size: 9px !important; /* default to 10px */
+  }
+  
+  @media (max-width: 1500px) {
+    .responsive-calendar {
+      font-size: 8px !important;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .responsive-calendar {
+      font-size: 7px !important;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .responsive-calendar {
+      font-size: 6px !important;
+    }
+
+  }
+  
+  /* Large screens */
+  @media (min-width: 2500px) {
+    .responsive-calendar {
+      font-size: 12px !important;
+    }
+  }

@@ -1,4 +1,4 @@
-import { Link, useForm } from "@inertiajs/react";
+import { Link, useForm, usePage } from "@inertiajs/react";
 import React, { useState } from "react";
 import {
     IoAdd,
@@ -61,13 +61,15 @@ export const FilialButton = ({ url, label, title }: ButtonsProps) => {
 };
 
 export const AddButton = ({ url, label, title }: ButtonsProps) => {
+    const { auth } = usePage().props as any;
     return (
         <Link
-            className="flex items-center justify-center bg-blue-700 hover:bg-blue-600 py-1.5 px-3 rounded-md shadow text-gray-50 self-end"
+            className={`flex items-center justify-center ${auth.user.company_id === null ? 'bg-blue-700 hover:bg-blue-600' : 'bg-blue-700/50'} py-1.5 px-3 rounded-md shadow text-gray-50 self-end`}
             href={url}
             as="button"
             type="button"
             title={title}
+            disabled={auth.user.company_id === null ? false : true}
         >
             <IoAdd size={18} />
             <span>{label}</span>
@@ -106,6 +108,7 @@ export const EditButton = ({ url, param, title }: ButtonsProps) => {
 };
 
 export const DeleteButton = ({ identify, param, url, title }: ButtonsProps) => {
+    const { auth } = usePage().props as any;
     const [showConfirme, setShowConfirme] = useState(false);
     const { delete: destroy } = useForm();
 
@@ -171,9 +174,10 @@ export const DeleteButton = ({ identify, param, url, title }: ButtonsProps) => {
         <>
             {showConfirme && <ModalDelete />}
             <button
-                className="flex items-center justify-center bg-red-600 hover:bg-red-500 py-1.5 px-3 rounded-md shadow text-gray-50 self-end"
+                className={`flex items-center justify-center ${auth.user.company_id === null ? 'bg-red-600 hover:bg-red-500' : 'bg-red-600/50'} py-1.5 px-3 rounded-md shadow text-gray-50 self-end`}
                 onClick={() => setShowConfirme(true)}
                 title={title}
+                disabled={auth.user.company_id === null ? false : true}
             >
                 <IoTrash size={18} />
             </button>

@@ -3,6 +3,11 @@ import ApplicationLogo from "../ApplicationLogo"
 import LinkHeader from "../LinkHeader"
 import MenuButton from "../MenuButton"
 import Profile from "../Profile"
+import { AiOutlineDashboard, AiTwotoneDashboard } from "react-icons/ai"
+import { GiReceiveMoney } from "react-icons/gi"
+import { SlOrganization } from "react-icons/sl"
+import { IoIosBusiness } from "react-icons/io"
+import { FaUsers } from "react-icons/fa6"
 
 const Header = () => {
     const { auth } = usePage().props as any;
@@ -17,15 +22,15 @@ const Header = () => {
                     </Link>
                 </div>
                 <div className="flex-1 md:flex hidden items-center justify-start gap-4">
-                    <LinkHeader label="Dashboard" url="dashboard" active={route().current('dashboard')} />
+                    <LinkHeader label="Dashboard" url="dashboard" active={route().current('dashboard')} icon={<AiOutlineDashboard size={20} />} />
                     {auth?.user?.organization_id === null &&
                         <>
-                            <LinkHeader label="Organizações" active={route().current('organizations.*')} url="organizations.index" />
-                            <LinkHeader label="Filiais" active={route().current('companies.*')} url="companies.index" />
+                            <LinkHeader label="Organizações" active={route().current('organizations.*')} url="organizations.index" icon={<SlOrganization size={20} />}/>
+                            <LinkHeader label="Filiais" active={route().current('companies.*')} url="companies.index" icon={<IoIosBusiness size={20} />} />
                         </>
                     }
                     {auth?.user?.organization_id !== null &&
-                        <LinkHeader label="Faturamento" active={route().current('faturamento')} url="faturamento" />
+                        <LinkHeader label="Faturamento" active={route().current('faturamento')} url="faturamento" icon={<GiReceiveMoney size={20} />} />
                     }
                 </div>
                 <div className="flex items-center justify-end">
@@ -33,7 +38,7 @@ const Header = () => {
                         <MenuButton />
                     </div>
                     <div className="hidden md:flex">
-                        <LinkHeader label="Usuários" url="users.index" active={route().current('users.*')} />
+                        <LinkHeader label="Usuários" url="users.index" active={route().current('users.*')} icon={<FaUsers size={20} />} />
                     </div>
                     <Profile />
                 </div>

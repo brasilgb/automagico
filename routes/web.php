@@ -6,6 +6,7 @@ use App\Http\Controllers\InvoicingController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\IsUser;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {

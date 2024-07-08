@@ -6,13 +6,13 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 
 const Profile = () => {
     const { auth } = usePage().props as any;
-    
+
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const toggle = () => {
         setIsOpen(old => !old);
     };
-    
+
     const transClass = isOpen ? 'flex' : 'hidden';
 
     return (
@@ -35,25 +35,25 @@ const Profile = () => {
                     <span
                         className="text-sm text-gray-600 px-4 pb-3 flex items-center"
                     >
-                        <IoMdUnlock color="#6d6a6a" size={20} />
+                        <IoMdUnlock size={18} />
                         <span className="ml-1">{auth?.user?.name}</span>
                     </span>
                     <span className="w-full border-b border-gray-200"></span>
                     <Link
-                        className="text-gray-600 hover:text-gray-400 px-4 pt-2 flex items-center"
+                        className="text-sm text-gray-600 hover:text-gray-400 px-4 pt-2 flex items-center"
                         href={route('users.edit', auth.user.id)}
                         onClick={toggle}
                     >
-                        <IoPerson color="#6d6a6a" size={20} />
+                        <IoPerson size={18} />
                         <span className="ml-1">Profile</span>
                     </Link>
                     <Link
                         href={route('logout')}
                         method="post"
                         as="button"
-                        className="text-gray-600 hover:text-gray-400 px-4 pt-2 flex items-center"
+                        className="text-sm text-gray-600 hover:text-gray-400 px-4 pt-2 flex items-center"
                     >
-                        <IoExit color="#6d6a6a" size={20} />
+                        <IoExit size={18} />
                         <span className="ml-1">Sair</span>
                     </Link>
 
