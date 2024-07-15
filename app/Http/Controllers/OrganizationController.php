@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Organization;
+use App\Models\Settings;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -45,7 +46,8 @@ class OrganizationController extends Controller
             ]
         );
 
-        Organization::create($data);
+        $organization = Organization::create($data);
+        Settings::create(['organization_id' => $organization->id]);
         Session::flash('success', 'Organização cadastrada com sucesso!');
         return redirect()->route('organizations.index');
     }

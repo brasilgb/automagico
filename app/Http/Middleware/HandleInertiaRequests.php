@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -40,6 +41,9 @@ class HandleInertiaRequests extends Middleware
             ],
             'user' => [
                 'exists' => User::exists(),
+            ],
+            'settings' => fn () => [
+                Settings::first()
             ],
         ];
     }

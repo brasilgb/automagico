@@ -22,7 +22,6 @@ class CompanyController extends Controller
         $org = $request->get('o');
         
         $query = Company::with('organization')->orderBy('id', 'DESC');
-
         if ($search) {
             $query->where('corpreason', 'like', '%' . $search . '%')
             ->orWhere('cnpj', 'like', '%' . $search . '%');

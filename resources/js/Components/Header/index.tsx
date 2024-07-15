@@ -10,22 +10,25 @@ import { IoIosBusiness } from "react-icons/io"
 import { FaUsers } from "react-icons/fa6"
 
 const Header = () => {
-    const { auth } = usePage().props as any;
+    const { auth, settings } = usePage().props as any;
+
     return (
-        <header className="flex items-center justify-between h-14 px-4 bg-[#FFFFFF] shadow-sm  sticky top-0 z-40">
+        <header 
+        style={{ backgroundColor: settings?.headerbg ? settings?.headerbg : '#FFFFFF', color: settings?.headertext ? settings?.headertext : '#FFFFFF' }} 
+        className='flex items-center justify-between h-14 px-4 shadow-sm  sticky top-0 z-40'>
             <div className="container mx-auto flex items-center justify-between">
-                <div className="w-44 mr-8">
+                <div className="mr-8">
                     <Link
                         href={route('dashboard')}
                     >
-                        <ApplicationLogo />
+                        <ApplicationLogo className="object-contain h-12 w-96" />
                     </Link>
                 </div>
-                <div className="flex-1 md:flex hidden items-center justify-start gap-4">
+                <div className="flex-1 md:flex hidden items-center justify-start gap-4">kkkk
                     <LinkHeader label="Dashboard" url="dashboard" active={route().current('dashboard')} icon={<AiOutlineDashboard size={20} />} />
                     {auth?.user?.organization_id === null &&
                         <>
-                            <LinkHeader label="Organizações" active={route().current('organizations.*')} url="organizations.index" icon={<SlOrganization size={20} />}/>
+                            <LinkHeader label="Organizações" active={route().current('organizations.*')} url="organizations.index" icon={<SlOrganization size={20} />} />
                             <LinkHeader label="Filiais" active={route().current('companies.*')} url="companies.index" icon={<IoIosBusiness size={20} />} />
                         </>
                     }

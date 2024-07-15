@@ -1,7 +1,6 @@
-import { AddButton } from '@/Components/Buttons'
-import { Card, CardBody, CardContainer, CardHeader, CardHeaderContent } from '@/Components/Card'
+import { AddButton, SaveButton } from '@/Components/Buttons'
+import { Card, CardBody, CardContainer, CardFooter, CardHeader, CardHeaderContent } from '@/Components/Card'
 import FlashMessage from '@/Components/FlashMessage'
-import InputSearch from '@/Components/InputSearch'
 import { BreadCrumbTop, HeaderContent, TitleTop } from '@/Components/PageTop'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Head, router, useForm, usePage } from '@inertiajs/react'
@@ -10,7 +9,7 @@ import React from 'react'
 import { SlOrganization } from 'react-icons/sl'
 
 interface ClientesProps {
-    logo: any;
+    logo: any | null;
     headerbg: string;
     headertext: string;
     buttonbg: string;
@@ -24,10 +23,6 @@ const Settings = ({ settings }: any) => {
     const {
         data,
         setData,
-        patch,
-        progress,
-        processing,
-        errors,
     }: InertiaFormProps<ClientesProps> = useForm({
         logo: null,
         headerbg: settings.headerbg,
@@ -58,12 +53,12 @@ const Settings = ({ settings }: any) => {
                 <HeaderContent>
                     <TitleTop>
                         <SlOrganization size={30} />
-                        <span className="ml-2">Configurações</span>
+                        <span className="ml-2">Configurações - ID:{settings.id}</span>
                     </TitleTop>
                     <BreadCrumbTop links={[{ url: null, label: "Configurações" }]} />
                 </HeaderContent>
                 <CardContainer>
-                    <FlashMessage message={'flash'} />
+                    <FlashMessage message={flash} />
                     <form onSubmit={handleSubmit} autoComplete="off">
                         <CardBody>
                             <div className="px-3 my-4">
@@ -84,7 +79,7 @@ const Settings = ({ settings }: any) => {
                                         <input
                                             id="logo"
                                             type="file"
-                                            onChange={(e) =>
+                                            onChange={(e: any) =>
                                                 setData(
                                                     "logo",
                                                     e.target.files[0],
@@ -116,7 +111,7 @@ const Settings = ({ settings }: any) => {
                                                     e.target.value,
                                                 )
                                             }
-                                            className="input-form !p-0 !h-10 w-full"
+                                            className="input-form !h-10 w-full"
                                         />
                                     </div>
                                     <div className="flex flex-col">
@@ -136,7 +131,7 @@ const Settings = ({ settings }: any) => {
                                                     e.target.value,
                                                 )
                                             }
-                                            className="input-form !p-0 !h-10 w-full"
+                                            className="input-form !h-10 w-full"
                                         />
                                     </div>
                                 </div>
@@ -158,7 +153,7 @@ const Settings = ({ settings }: any) => {
                                                     e.target.value,
                                                 )
                                             }
-                                            className="input-form !p-0 !h-10 w-full"
+                                            className="input-form !h-10 w-full"
                                         />
                                     </div>
                                     <div className="flex flex-col">
@@ -178,7 +173,7 @@ const Settings = ({ settings }: any) => {
                                                     e.target.value,
                                                 )
                                             }
-                                            className="input-form !p-0 !h-10 w-full"
+                                            className="input-form !h-10 w-full"
                                         />
                                     </div>
                                 </div>
@@ -200,7 +195,7 @@ const Settings = ({ settings }: any) => {
                                                     e.target.value,
                                                 )
                                             }
-                                            className="input-form !p-0 !h-10 w-full"
+                                            className="input-form !h-10 w-full"
                                         />
                                     </div>
                                     <div className="flex flex-col">
@@ -220,12 +215,15 @@ const Settings = ({ settings }: any) => {
                                                     e.target.value,
                                                 )
                                             }
-                                            className="input-form !p-0 !h-10 w-full"
+                                            className="input-form !h-10 w-full"
                                         />
                                     </div>
                                 </div>
                             </div>
                         </CardBody>
+                        <CardFooter>
+                            <SaveButton />
+                        </CardFooter>
                     </form>
                 </CardContainer>
             </Card>

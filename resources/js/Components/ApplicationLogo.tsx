@@ -2,16 +2,17 @@ import { usePage } from "@inertiajs/react";
 interface ApplicationLogoProps {
     className?: string;
 }
-const ApplicationLogo = ({className}: ApplicationLogoProps) => {
-    const { conf = [] } = usePage().props as any;
+const ApplicationLogo = ({ className }: ApplicationLogoProps) => {
+    const { settings } = usePage().props as any;
 
     return (
-            <div className={className}>
-                <img
-                src={`/storage/images/${conf[0]?.logo ? conf[0]?.logo : "automahost.png"}`}
+
+            <img
+            className={className}
+                src={`/storage/images/${settings?.logo ? settings?.logo : "default.png"}`}
                 alt="Logo"
             />
-            </div>
+ 
     );
 };
 
