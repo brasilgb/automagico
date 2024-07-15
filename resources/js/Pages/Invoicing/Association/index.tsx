@@ -51,7 +51,7 @@ const Association = () => {
           </TableRow>
         </TableHeader>
         <TableHeader>
-          {autoMagicoAssociation.filter((total: any) => (total.assoc == 'XX')).map((assoc: any, idx: number) => (
+          {autoMagicoAssociation.filter((total: any) => (total.assoc === 'XX')).map((assoc: any, idx: number) => (
             <TableRow className={`${idx % 2 === 0 ? 'bg-gray-500' : 'bg-gray-100'}`}>
               <TableHead>Total</TableHead>
               <TableHead>{assoc.assoc}</TableHead>

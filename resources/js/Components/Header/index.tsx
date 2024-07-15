@@ -37,7 +37,8 @@ const Header = () => {
                     <div className="relative md:hidden">
                         <MenuButton />
                     </div>
-                    <div className="hidden md:flex">
+                    <div className="hidden md:flex gap-4">
+                        <LinkHeader label="Configurações" url="settings.index" active={route().current('settings.index')} icon={<FaUsers size={20} />} />
                         <LinkHeader label="Usuários" url="users.index" active={route().current('users.*')} icon={<FaUsers size={20} />} />
                     </div>
                     <Profile />
