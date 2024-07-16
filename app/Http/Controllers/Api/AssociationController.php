@@ -13,7 +13,6 @@ class AssociationController extends Controller
      */
     public function getAssociations(Request $request)
     {
-        
         $wquery = Association::where('dtvenda', $request->dt)->where('filial', $request->fl)->first();
         if($wquery){
             $association = Association::where('dtvenda', $request->dt)->where('filial', $request->fl)->get();

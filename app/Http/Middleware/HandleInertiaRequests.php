@@ -41,10 +41,7 @@ class HandleInertiaRequests extends Middleware
             ],
             'user' => [
                 'exists' => User::exists(),
-            ],
-            'settings' => fn () => [
-                Settings::first()
-            ],
+            ]
         ];
     }
 }

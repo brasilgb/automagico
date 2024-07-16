@@ -8,23 +8,29 @@ import { GiReceiveMoney } from "react-icons/gi"
 import { SlOrganization } from "react-icons/sl"
 import { IoIosBusiness } from "react-icons/io"
 import { FaUsers } from "react-icons/fa6"
+import { useEffect, useState } from "react"
+import apiautomagico from "@/bootstrap"
+import { userInfo } from "os"
+import { useAuthContext } from "@/Contexts"
 
 const Header = () => {
-    const { auth, settings } = usePage().props as any;
+    const { auth } = usePage().props as any;
+    const {settingsUser} = useAuthContext();
 
     return (
-        <header 
-        style={{ backgroundColor: settings?.headerbg ? settings?.headerbg : '#FFFFFF', color: settings?.headertext ? settings?.headertext : '#FFFFFF' }} 
-        className='flex items-center justify-between h-14 px-4 shadow-sm  sticky top-0 z-40'>
+        <header
+            style={{ backgroundColor: settingsUser?.headerbg ? settingsUser?.headerbg : '#FFFFFF', color: settingsUser?.headertext ? settingsUser?.headertext : '#FFFFFF' }}
+            className='flex items-center justify-between h-14 px-4 shadow-sm  sticky top-0 z-40'>
             <div className="container mx-auto flex items-center justify-between">
                 <div className="mr-8">
                     <Link
                         href={route('dashboard')}
                     >
-                        <ApplicationLogo className="object-contain h-12 w-96" />
+                        <ApplicationLogo className="object-contain h-12 w-96" settings={settingsUser} />
                     </Link>
                 </div>
-                <div className="flex-1 md:flex hidden items-center justify-start gap-4">kkkk
+                <div className="flex-1 md:flex hidden items-center justify-start gap-4">
+
                     <LinkHeader label="Dashboard" url="dashboard" active={route().current('dashboard')} icon={<AiOutlineDashboard size={20} />} />
                     {auth?.user?.organization_id === null &&
                         <>

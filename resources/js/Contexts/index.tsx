@@ -1,29 +1,30 @@
+import apiautomagico from "@/bootstrap";
 import { DayRange, DayValue } from "@hassanmojab/react-modern-calendar-datepicker";
+import { usePage } from "@inertiajs/react";
 import moment, { now } from "moment";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext({} as any);
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-
-    // const [dataInicial, setDataInicial] = useState(new Date());
-    // const [dataFinal, setDataFinal] = useState(new Date());
     const [dataFiltro, setDataFiltro] = useState<any>(moment().format("YYYY-MM-DD"));
     const [alteredAnalise, setAlteredAnalise] = useState<string>('faturamento');
     const [filialAnalise, setFilialAnalise] = useState('1');
     const [selectedDay, setSelectedDay] = useState<DayValue>(null);
-    // const [executeRange, setExecuteRange] = useState<boolean>(false);
-    // const [selectedRange, setSelectedRange] = useState<DayRange>({
-    //     from: {
-    //       year: parseInt(moment(dataInicial).format('YYYY')),
-    //       month: parseInt(moment(dataInicial).format('MM')),
-    //       day: parseInt(moment(dataInicial).format('DD')),
-    //     },
-    //     to: {
-    //       year: parseInt(moment(dataFinal).format('YYYY')),
-    //       month: parseInt(moment(dataFinal).format('MM')),
-    //       day: parseInt(moment(dataFinal).format('DD')),
-    //     },
-    //   });
+
+    // const [ settingsUser, setSettingsUser] = useState<any>([]);
+    // const [ settingsOrg, setSettingsOrg] = useState<any>();
+    //     useEffect(() => {
+    //         const getSettingsUser = async () => {
+    //             await apiautomagico.get(`settings?org=${settingsOrg}`)
+    //             .then((result) => {
+    //                 setSettingsUser(result.data.response);
+    //             })
+    //             .catch((err) => {
+    //                 console.log(err);
+    //             })
+    //         };
+    //         getSettingsUser();
+    //     }, [settingsOrg]);
 
     return (
         <AuthContext.Provider

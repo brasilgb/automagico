@@ -2,10 +2,11 @@ import { AddButton, SaveButton } from '@/Components/Buttons'
 import { Card, CardBody, CardContainer, CardFooter, CardHeader, CardHeaderContent } from '@/Components/Card'
 import FlashMessage from '@/Components/FlashMessage'
 import { BreadCrumbTop, HeaderContent, TitleTop } from '@/Components/PageTop'
+import { useAuthContext } from "@/Contexts"
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Head, router, useForm, usePage } from '@inertiajs/react'
 import { InertiaFormProps } from '@inertiajs/react/types/useForm'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { SlOrganization } from 'react-icons/sl'
 
 interface ClientesProps {

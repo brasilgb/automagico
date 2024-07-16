@@ -1,6 +1,7 @@
 import { usePage } from "@inertiajs/react";
 interface ApplicationLogoProps {
     className?: string;
+    settings?: any;
 }
 const ApplicationLogo = ({ className }: ApplicationLogoProps) => {
     const { settings } = usePage().props as any;
