@@ -9,16 +9,16 @@ use Illuminate\Database\Eloquent\Model;
 class Settings extends Model
 {
     use HasFactory;
-    // protected $guarded = ['id'];
-    protected $fillable = [
-        'logo',
-        'headerbg',
-        'headertext',
-        'buttonbg',
-        'buttontext',
-        'footerbg',
-        'footertext'
-    ];
+    protected $guarded = ['id'];
+    // protected $fillable = [
+    //     'logo',
+    //     'headerbg',
+    //     'headertext',
+    //     'buttonbg',
+    //     'buttontext',
+    //     'footerbg',
+    //     'footertext'
+    // ];
 
     protected static function boot()
     {

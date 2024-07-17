@@ -40,13 +40,11 @@ class HandleInertiaRequests extends Middleware
             ],
             'auth' => [
                 'user' => $request->user(),
+                'settings' => $request->user() ? DB::table('settings')->where('organization_id', $request->user()->organization_id)->first() : ''
             ],
             'user' => [
                 'exists' => User::exists(),
             ],
-            'settings' => fn () => [
-                Auth::check() ? DB::table('settings')->where('organization_id', Auth::user()->organization_id)->first() : []
-            ]
         ];
     }
 }

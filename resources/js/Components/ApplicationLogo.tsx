@@ -3,9 +3,8 @@ interface ApplicationLogoProps {
     className?: string;
     settings?: any;
 }
-const ApplicationLogo = ({ className }: ApplicationLogoProps) => {
-    const { settings } = usePage().props as any;
-
+const ApplicationLogo = ({ className, settings }: ApplicationLogoProps) => {
+ 
     return (
 
             <img

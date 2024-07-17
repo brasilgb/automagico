@@ -11,18 +11,18 @@ import { FaUsers } from "react-icons/fa6"
 import { useAuthContext } from "@/Contexts"
 
 const Header = () => {
-    const { auth, settings } = usePage().props as any;
+    const { auth } = usePage().props as any;
 
     return (
         <header
-            style={{ backgroundColor: settings?.headerbg ? settings?.headerbg : '#FFFFFF', color: settings?.headertext ? settings?.headertext : '#FFFFFF' }}
+            style={{ backgroundColor: auth.settings?.headerbg ? auth.settings?.headerbg : '#FFFFFF', color: auth.settings?.headertext ? auth.settings?.headertext : '#FFFFFF' }}
             className='flex items-center justify-between h-14 px-4 shadow-sm  sticky top-0 z-40'>
             <div className="container mx-auto flex items-center justify-between">
                 <div className="mr-8">
                     <Link
                         href={route('dashboard')}
                     >
-                        <ApplicationLogo className="object-contain h-12 w-96" settings={settings} />
+                        <ApplicationLogo className="object-contain h-12 w-96" settings={auth.settings} />
                     </Link>
                 </div>
                 <div className="flex-1 md:flex hidden items-center justify-start gap-4">

@@ -14,45 +14,50 @@ import moment from "moment"
 import React, { useEffect, useState } from 'react'
 import { IoInformationCircle } from "react-icons/io5";
 import 'animate.css';
+import AppLoading from "@/Components/AppLoading";
 
 const Sales = () => {
   const { dataFiltro, filialAnalise } = useAuthContext();
   const [totals, setTotals] = useState<any>([]);
   const [autoMagicoSales, setAutoMagicoSales] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
- useEffect(() => {
-  const getTotals = async () => {
-    await apiautomagico.get(`totais?dt=${moment(dataFiltro).format("YYYYMMDD")}&fl=${filialAnalise}`)
-    .then((response) => {
-      const { totals } = response.data.response;
-      setTotals(totals);
-    })
-    .catch((err) => {
-      console.log(err);
-      
-    })
-  };
-  getTotals();
- },[dataFiltro, filialAnalise]);
+  useEffect(() => {
+    const getTotals = async () => {
+      setLoading(true);
+      await apiautomagico.get(`totais?dt=${moment(dataFiltro).format("YYYYMMDD")}&fl=${filialAnalise}`)
+        .then((response) => {
+          const { totals } = response.data.response;
+          setTotals(totals);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
 
- useEffect(() => {
-  const getAutoMagicoSales = async () => {
-    await apiautomagico.get(`vendas?dt=${moment(dataFiltro).format("YYYYMMDD")}&fl=${filialAnalise}`)
-    .then((response) => {
-      const { sales } = response.data.response;
-      setAutoMagicoSales(sales);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  };
-  getAutoMagicoSales();
- },[dataFiltro, filialAnalise]);
+        })
+    };
+    getTotals();
+  }, [dataFiltro, filialAnalise]);
+
+  useEffect(() => {
+    const getAutoMagicoSales = async () => {
+      await apiautomagico.get(`vendas?dt=${moment(dataFiltro).format("YYYYMMDD")}&fl=${filialAnalise}`)
+        .then((response) => {
+          const { sales } = response.data.response;
+          setAutoMagicoSales(sales);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    };
+    getAutoMagicoSales();
+  }, [dataFiltro, filialAnalise]);
 
   return (
     <>
-    <Head title="Vendas" />
-      <Table className="bg-megb-blue-secundary rounded-t-md w-full animate__animated animate__fadeIn">
+      {loading && <AppLoading />}
+      <Head title="Vendas" />
+      <Table className="rounded-t-md w-full animate__animated animate__fadeIn">
         <TableHeader>
           <TableRow>
             <TableHead>#</TableHead>
@@ -64,8 +69,8 @@ const Sales = () => {
           </TableRow>
         </TableHeader>
         <TableHeader>
-        {totals &&
-            <TableRow className='bg-gray-500'>
+          {totals &&
+            <TableRow className='bg-gray-100'>
               <TableHead>Total</TableHead>
               <TableHead>{moment(totals?.datatu).format("DD/MM/YYYY")}</TableHead>
               <TableHead>{MoneyptBR(totals?.valmeta)}</TableHead>

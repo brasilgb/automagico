@@ -14,18 +14,23 @@ import moment from "moment";
 import React, { useEffect, useState } from 'react'
 import { IoInformationCircle } from "react-icons/io5";
 import 'animate.css';
+import AppLoading from "@/Components/AppLoading";
 
 const Association = () => {
   const { dataFiltro, filialAnalise } = useAuthContext();
   const [autoMagicoAssociation, setAutoMagicoAssociation] = useState<any>([]);
   const [pagination, setPagination] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
 
   useEffect(() => {
     const getAutoMagicoAssociation = async () => {
+      setLoading(true);
       await apiautomagico.get(`associacoes?dt=${moment(dataFiltro).format("YYYYMMDD")}&fl=${filialAnalise}`)
         .then((response) => {
           const { association } = response.data.response;
           setAutoMagicoAssociation(association);
+          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
@@ -36,8 +41,9 @@ const Association = () => {
 
   return (
     <>
+      {loading && <AppLoading />}
       <Head title="Vendas por associação" />
-      <Table className="bg-megb-blue-secundary rounded-t-md w-full animate__animated animate__fadeIn">
+      <Table className="rounded-t-md w-full animate__animated animate__fadeIn">
         <TableHeader>
           <TableRow>
             <TableHead>#</TableHead>
@@ -52,7 +58,7 @@ const Association = () => {
         </TableHeader>
         <TableHeader>
           {autoMagicoAssociation.filter((total: any) => (total.assoc === 'XX')).map((assoc: any, idx: number) => (
-            <TableRow className={`${idx % 2 === 0 ? 'bg-gray-500' : 'bg-gray-100'}`}>
+            <TableRow className={`${idx % 2 === 0 ? 'bg-gray-50' : 'bg-gray-100'}`}>
               <TableHead>Total</TableHead>
               <TableHead>{assoc.assoc}</TableHead>
               <TableHead>{assoc.descassoc}</TableHead>

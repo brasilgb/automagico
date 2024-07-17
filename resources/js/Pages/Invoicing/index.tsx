@@ -13,7 +13,6 @@ import AnaliseRede from "@/Components/AnaliseRede"
 const Invoicing = ({ companies }: any) => {
   const { auth } = usePage().props as any;
   const { alteredAnalise, setAlteredAnalise } = useAuthContext();
-  console.log(auth.user.company_id);
 
   return (
     <AuthenticatedLayout>
@@ -21,7 +20,9 @@ const Invoicing = ({ companies }: any) => {
       <Card>
         <HeaderContent>
           <div className="flex flex-col w-full">
-            <div className="flex gap-2 items-center justify-auto p-1 bg-automa-green-primary rounded-md shadow-md border border-automa-green-secundary w-full">
+            <div 
+            style={{ backgroundColor: auth.settings?.secundarybarbg ? auth.settings?.secundarybarbg : '#749324', color: auth.settings?.secundarybartext ? auth.settings?.secundarybartext : '#FFFFFF' }}
+            className="flex gap-2 items-center justify-auto p-1 rounded-md shadow-md border border-gray-300/80 w-full">
               <DatePickerSingle route='faturamento' />
               <FiliaisSelector data={companies} />
               {auth.user.company_id === null &&

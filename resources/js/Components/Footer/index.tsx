@@ -2,10 +2,10 @@ import { usePage } from "@inertiajs/react";
 import moment from "moment"
 
 const Footer = () => {
-  const { settings } = usePage().props as any;
+  const { auth } = usePage().props as any;
   return (
     <footer 
-    style={{ backgroundColor: settings?.footerbg ? settings?.footerbg : '#f9fafb', color: settings?.footertext ? settings?.footertext : '#6b7280' }} 
+    style={{ backgroundColor: auth.settings?.footerbg ? auth.settings?.footerbg : '#f9fafb', color: auth.settings?.footertext ? auth.settings?.footertext : '#6b7280' }} 
         className="md:h-8 h-12 flex items-center">
       <div className="container mx-auto px-4">
         <div className="md:mx-4 flex md:flex-row flex-col md:justify-between">

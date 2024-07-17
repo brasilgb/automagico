@@ -34,17 +34,22 @@ interface ButtonsProps {
 }
 
 export const AnaliseButton = ({ onclick, label, active, title }: ButtonsProps) => {
+    const { auth } = usePage().props as any;
     const { dataFiltro, filialAnalise } = useAuthContext();
-      return (
-          <button
-              onClick={onclick}
-              className={`px-3 py-1.5 w-48 text-xs uppercase font-bold shadow border border-white ${active ? 'text-gray-50 bg-automa-green-secundary' : 'bg-automa-green-primary/60 text-gray-50'} hover:bg-automa-green-secundary hover:text-gray-50 rounded-md transition-colors duration-300`}
-              title={title}>
-              {label}
-          </button>
-      )
-  }
-    
+    return (
+        <button
+            style={{
+                backgroundColor: active ? auth.settings?.buttonanalisebgactive ? auth.settings?.buttonanalisebgactive : '#67821d' : auth.settings?.buttonanalisebg ? auth.settings?.buttonanalisebg : '#a0bc53',
+                color: active ? auth.settings?.buttonanalisetextactive ? auth.settings?.buttonanalisetextactive : '#FFFFFF' : auth.settings?.buttonanalisetext ? auth.settings?.buttonanalisetext : '#FFFFFF'
+            }}
+            onClick={onclick}
+            className={`px-3 py-1.5 w-48 text-xs uppercase font-bold shadow border border-white rounded-md transition-colors duration-300`}
+            title={title}>
+            {label}
+        </button>
+    )
+}
+
 export const FilialButton = ({ url, label, title }: ButtonsProps) => {
     return (
         <Link

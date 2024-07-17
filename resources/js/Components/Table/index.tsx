@@ -34,7 +34,7 @@ export const TableRow = ({ children, className, key }: TableProps) => {
 export const TableHead = ({ children, className }: TableProps) => {
     return (
         <th
-            className={`text-left py-2 px-2 text-gray-50 ${className}`}
+            className={`text-left py-2 px-2 text-gray-500 ${className}`}
         >
             {children}
         </th>
@@ -43,7 +43,7 @@ export const TableHead = ({ children, className }: TableProps) => {
 
 export const TableCell = ({ children, className, colspan }: TableProps) => {
     return (
-        <td colSpan={colspan} className={`border-b py-2 px-2 ${className}`}>
+        <td colSpan={colspan} className={`border-b py-2 px-2 text-gray-500 ${className}`}>
             {children}
         </td>
     );

@@ -19,13 +19,14 @@ const Profile = () => {
         <>
             <div className="relative md:flex hidden">
                 <button
+                style={{color: auth.settings?.headertext ? auth.settings?.headertext : '#FFFFFF'}}
                     className="flex items-center justify-between px-2"
                     onClick={toggle}
                 >
-                    <div className="text-gray-700">
+                    <div className="">
                         <IoPerson size={20} />
                     </div>
-                    <div className="text-gray-700">
+                    <div className="">
                         <MdOutlineKeyboardArrowDown size={20} className={`duration-300 ${isOpen ? '-rotate-180' : 'rotate-0'}`} />
                     </div>
                 </button>
