@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -41,6 +43,9 @@ class HandleInertiaRequests extends Middleware
             ],
             'user' => [
                 'exists' => User::exists(),
+            ],
+            'settings' => fn () => [
+                Auth::check() ? DB::table('settings')->where('organization_id', Auth::user()->organization_id)->first() : []
             ]
         ];
     }
