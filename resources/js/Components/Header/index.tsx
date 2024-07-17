@@ -3,12 +3,12 @@ import ApplicationLogo from "../ApplicationLogo"
 import LinkHeader from "../LinkHeader"
 import MenuButton from "../MenuButton"
 import Profile from "../Profile"
-import { AiOutlineDashboard, AiTwotoneDashboard } from "react-icons/ai"
+import { AiOutlineDashboard } from "react-icons/ai"
 import { GiReceiveMoney } from "react-icons/gi"
 import { SlOrganization } from "react-icons/sl"
 import { IoIosBusiness } from "react-icons/io"
 import { FaUsers } from "react-icons/fa6"
-import { useAuthContext } from "@/Contexts"
+import { MdOutlineTune } from "react-icons/md"
 
 const Header = () => {
     const { auth } = usePage().props as any;
@@ -22,7 +22,7 @@ const Header = () => {
                     <Link
                         href={route('dashboard')}
                     >
-                        <ApplicationLogo className="object-contain h-12 w-96" settings={auth.settings} />
+                        <ApplicationLogo className="object-contain h-10 w-auto" settings={auth.settings} />
                     </Link>
                 </div>
                 <div className="flex-1 md:flex hidden items-center justify-start gap-4">
@@ -42,7 +42,7 @@ const Header = () => {
                         <MenuButton />
                     </div>
                     <div className="hidden md:flex gap-4">
-                        <LinkHeader label="Configurações" url="settings.index" active={route().current('settings.index')} icon={<FaUsers size={20} />} />
+                        <LinkHeader label="Configurações" url="settings.index" active={route().current('settings.index')} icon={<MdOutlineTune size={20} />} />
                         <LinkHeader label="Usuários" url="users.index" active={route().current('users.*')} icon={<FaUsers size={20} />} />
                     </div>
                     <Profile />

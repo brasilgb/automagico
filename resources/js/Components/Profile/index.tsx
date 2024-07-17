@@ -19,7 +19,7 @@ const Profile = () => {
         <>
             <div className="relative md:flex hidden">
                 <button
-                style={{color: auth.settings?.headertext ? auth.settings?.headertext : '#FFFFFF'}}
+                style={{color: auth.settings?.headertext ? auth.settings?.headertext : '#5c5a5a'}}
                     className="flex items-center justify-between px-2"
                     onClick={toggle}
                 >

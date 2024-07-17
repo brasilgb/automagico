@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [alteredAnalise, setAlteredAnalise] = useState<string>('faturamento');
     const [filialAnalise, setFilialAnalise] = useState('1');
     const [selectedDay, setSelectedDay] = useState<DayValue>(null);
+    const [loading, setLoading] = useState<boolean>(false);
 
     // const [ settingsUser, setSettingsUser] = useState<any>([]);
     // const [ settingsOrg, setSettingsOrg] = useState<any>();
@@ -44,7 +45,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 filialAnalise, 
                 setFilialAnalise,
                 selectedDay, 
-                setSelectedDay
+                setSelectedDay, 
+                loading, 
+                setLoading
             }}
         >
             {children}

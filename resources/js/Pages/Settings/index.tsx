@@ -108,7 +108,7 @@ const Settings = ({ settings }: any) => {
                                             Logo da empresa
                                         </label>
                                         <input
-                                            disabled={auth.user.company_id === null ? false : true}
+                                            disabled={auth.user?.company_id === null ? false : true}
                                             id="logo"
                                             type="file"
                                             onChange={(e: any) =>
@@ -136,7 +136,7 @@ const Settings = ({ settings }: any) => {
                                                 Cor de fundo barra de menu
                                             </label>
                                             <input
-                                                disabled={auth.user.company_id === null ? false : true}
+                                                disabled={auth.user?.company_id === null ? false : true}
                                                 id="headerbg"
                                                 type="color"
                                                 value={data.headerbg}
@@ -157,7 +157,7 @@ const Settings = ({ settings }: any) => {
                                                 Cor de texto barra de menu
                                             </label>
                                             <input
-                                                disabled={auth.user.company_id === null ? false : true}
+                                                disabled={auth.user?.company_id === null ? false : true}
                                                 id="headertext"
                                                 type="color"
                                                 value={data.headertext}
@@ -179,7 +179,7 @@ const Settings = ({ settings }: any) => {
                                                 Cor de fundo do botão
                                             </label>
                                             <input
-                                                disabled={auth.user.company_id === null ? false : true}
+                                                disabled={auth.user?.company_id === null ? false : true}
                                                 id="buttonbg"
                                                 type="color"
                                                 value={data.buttonbg}
@@ -200,7 +200,7 @@ const Settings = ({ settings }: any) => {
                                                 Cor de texto do botão
                                             </label>
                                             <input
-                                                disabled={auth.user.company_id === null ? false : true}
+                                                disabled={auth.user?.company_id === null ? false : true}
                                                 id="buttontext"
                                                 type="color"
                                                 value={data.buttontext}
@@ -221,7 +221,7 @@ const Settings = ({ settings }: any) => {
                                                 Cor de fundo do botão ativo
                                             </label>
                                             <input
-                                                disabled={auth.user.company_id === null ? false : true}
+                                                disabled={auth.user?.company_id === null ? false : true}
                                                 id="buttonbgactive"
                                                 type="color"
                                                 value={data.buttonbgactive}
@@ -242,7 +242,7 @@ const Settings = ({ settings }: any) => {
                                                 Cor de texto do botão ativo
                                             </label>
                                             <input
-                                                disabled={auth.user.company_id === null ? false : true}
+                                                disabled={auth.user?.company_id === null ? false : true}
                                                 id="buttontextactive"
                                                 type="color"
                                                 value={data.buttontextactive}
@@ -270,7 +270,7 @@ const Settings = ({ settings }: any) => {
                                                         Cor de fundo da barra
                                                     </label>
                                                     <input
-                                                        disabled={auth.user.company_id === null ? false : true}
+                                                        disabled={auth.user?.company_id === null ? false : true}
                                                         id="secundarybarbg"
                                                         type="color"
                                                         value={data.secundarybarbg}
@@ -291,7 +291,7 @@ const Settings = ({ settings }: any) => {
                                                         Cor de texto da barra
                                                     </label>
                                                     <input
-                                                        disabled={auth.user.company_id === null ? false : true}
+                                                        disabled={auth.user?.company_id === null ? false : true}
                                                         id="secundarybartext"
                                                         type="color"
                                                         value={data.secundarybartext}
@@ -318,7 +318,7 @@ const Settings = ({ settings }: any) => {
                                                         Cor de fundo barra de análise
                                                     </label>
                                                     <input
-                                                        disabled={auth.user.company_id === null ? false : true}
+                                                        disabled={auth.user?.company_id === null ? false : true}
                                                         id="analisebg"
                                                         type="color"
                                                         value={data.analisebg}
@@ -339,7 +339,7 @@ const Settings = ({ settings }: any) => {
                                                         Cor de texto barra análise
                                                     </label>
                                                     <input
-                                                        disabled={auth.user.company_id === null ? false : true}
+                                                        disabled={auth.user?.company_id === null ? false : true}
                                                         id="analisetext"
                                                         type="color"
                                                         value={data.analisetext}
@@ -361,7 +361,7 @@ const Settings = ({ settings }: any) => {
                                                         Cor de fundo do botão análise
                                                     </label>
                                                     <input
-                                                        disabled={auth.user.company_id === null ? false : true}
+                                                        disabled={auth.user?.company_id === null ? false : true}
                                                         id="buttonanalisebg"
                                                         type="color"
                                                         value={data.buttonanalisebg}
@@ -382,7 +382,7 @@ const Settings = ({ settings }: any) => {
                                                         Cor de texto do botão
                                                     </label>
                                                     <input
-                                                        disabled={auth.user.company_id === null ? false : true}
+                                                        disabled={auth.user?.company_id === null ? false : true}
                                                         id="buttonanalisetext"
                                                         type="color"
                                                         value={data.buttonanalisetext}
@@ -403,7 +403,7 @@ const Settings = ({ settings }: any) => {
                                                         Cor de fundo do botão ativo
                                                     </label>
                                                     <input
-                                                        disabled={auth.user.company_id === null ? false : true}
+                                                        disabled={auth.user?.company_id === null ? false : true}
                                                         id="buttonanalisebgactive"
                                                         type="color"
                                                         value={data.buttonanalisebgactive}
@@ -424,7 +424,7 @@ const Settings = ({ settings }: any) => {
                                                         Cor de texto do botão ativo
                                                     </label>
                                                     <input
-                                                        disabled={auth.user.company_id === null ? false : true}
+                                                        disabled={auth.user?.company_id === null ? false : true}
                                                         id="buttonanalisetextactive"
                                                         type="color"
                                                         value={data.buttonanalisetextactive}
@@ -452,7 +452,7 @@ const Settings = ({ settings }: any) => {
                                                 Cor de fundo do rodapé
                                             </label>
                                             <input
-                                                disabled={auth.user.company_id === null ? false : true}
+                                                disabled={auth.user?.company_id === null ? false : true}
                                                 id="footerbg"
                                                 type="color"
                                                 value={data.footerbg}
@@ -473,7 +473,7 @@ const Settings = ({ settings }: any) => {
                                                 Cor de texto do rodapé
                                             </label>
                                             <input
-                                                disabled={auth.user.company_id === null ? false : true}
+                                                disabled={auth.user?.company_id === null ? false : true}
                                                 id="footertext"
                                                 type="color"
                                                 value={data.footertext}

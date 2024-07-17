@@ -13,39 +13,39 @@ class SaleController extends Controller
 {
     public function getSales(Request $request)
     {
-        $wquery = Sale::where('dtvenda', $request->dt)->where('filial', $request->fl)->first();
+        $wquery = Sale::where('dtvenda', $request->dt)->where('organization_id', $request->org)->where('filial', $request->fl)->first();
         if ($wquery) {
-            $sales = Sale::where('dtvenda', $request->dt)->where('filial', $request->fl)->get();
+            $sales = Sale::where('dtvenda', $request->dt)->where('organization_id', $request->org)->where('filial', $request->fl)->get();
         } else {
-            $lastDate = Sale::where('filial', $request->fl)->orderBy('dtvenda', 'DESC')->first();
+            $lastDate = Sale::where('organization_id', $request->org)->where('filial', $request->fl)->orderBy('dtvenda', 'DESC')->first();
             if ($lastDate !== null)
-                $sales = Sale::where('dtvenda', $lastDate->dtvenda)->where('filial', $request->fl)->get();
+                $sales = Sale::where('dtvenda', $lastDate->dtvenda)->where('organization_id', $request->org)->where('filial', $request->fl)->get();
         }
 
         return response()->json([
             "response" => [
                 "success" => true,
                 "status" => 201,
-                "sales" => $sales
+                "sales" => $wquery ? $sales : []
             ],
         ], 201);
     }
 
     public function getSalesChart(Request $request)
     {
-        $wquery = Sale::where('anomes', $request->dt)->where('filial', $request->fl)->first();
+        $wquery = Sale::where('anomes', $request->dt)->where('organization_id', $request->org)->where('filial', $request->fl)->first();
         if ($wquery) {
-            $saleschart = Sale::where('anomes', $request->dt)->where('filial', $request->fl)->get();
+            $saleschart = Sale::where('anomes', $request->dt)->where('organization_id', $request->org)->where('filial', $request->fl)->get();
         } else {
-            $lastDate = Sale::where('filial', $request->fl)->orderBy('anomes', 'DESC')->first();
+            $lastDate = Sale::where('organization_id', $request->org)->where('filial', $request->fl)->orderBy('anomes', 'DESC')->first();
             if ($lastDate !== null)
-                $saleschart = Sale::where('anomes', $lastDate->anomes)->where('filial', $request->fl)->get();
+                $saleschart = Sale::where('anomes', $lastDate->anomes)->where('organization_id', $request->org)->where('filial', $request->fl)->get();
         }
         return response()->json([
             "response" => [
                 "success" => true,
                 "status" => 201,
-                "saleschart" => $saleschart
+                "saleschart" => $wquery ? $saleschart : []
             ],
         ], 201);
     }

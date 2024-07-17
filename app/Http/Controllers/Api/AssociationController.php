@@ -13,20 +13,20 @@ class AssociationController extends Controller
      */
     public function getAssociations(Request $request)
     {
-        $wquery = Association::where('dtvenda', $request->dt)->where('filial', $request->fl)->first();
+        $wquery = Association::where('dtvenda', $request->dt)->where('organization_id', $request->org)->where('filial', $request->fl)->first();
         if($wquery){
-            $association = Association::where('dtvenda', $request->dt)->where('filial', $request->fl)->get();
+            $association = Association::where('dtvenda', $request->dt)->where('organization_id', $request->org)->where('filial', $request->fl)->get();
         }else{
-            $lastDate = Association::where('filial', $request->fl)->orderBy('dtvenda', 'DESC')->first();
+            $lastDate = Association::where('organization_id', $request->org)->where('filial', $request->fl)->orderBy('dtvenda', 'DESC')->first();
             if ($lastDate !== null) 
-            $association = Association::where('dtvenda', $lastDate->dtvenda)->where('filial', $request->fl)->get();
+            $association = Association::where('organization_id', $request->org)->where('dtvenda', $lastDate->dtvenda)->where('filial', $request->fl)->get();
         }
 
         return response()->json([
             "response" => [
                 "success" => true,
                 "status" => 201,
-                'association' => $association
+                'association' => $wquery ? $association : []
             ],
         ], 201);
     }

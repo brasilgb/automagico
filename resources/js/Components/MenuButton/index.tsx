@@ -7,6 +7,7 @@ import { GiReceiveMoney } from 'react-icons/gi';
 import { FaUsers } from 'react-icons/fa6';
 import { SlOrganization } from 'react-icons/sl';
 import { IoIosBusiness } from 'react-icons/io';
+import { MdOutlineTune } from "react-icons/md";
 
 const MenuButton = () => {
     const { auth } = usePage().props as any;
@@ -44,7 +45,7 @@ const MenuButton = () => {
                     {openMenu ? <MClose /> : <MHamburger />}
                 </button>
             </div>
-            <div className={`fixed z-[101] top-12 right-0 bottom-0 left-0 bg-white transition-transform ${!openMenu ? '-translate-x-full' : '-translate-x-0'}`}>
+            <div className={`fixed z-[101] top-14 right-0 bottom-0 left-0 bg-white transition-transform ${!openMenu ? '-translate-x-full' : '-translate-x-0'}`}>
                 <div className='px-1'>
                 <Link
                     href={route('dashboard')}
@@ -91,7 +92,15 @@ const MenuButton = () => {
                 >
                     <FaUsers size={20} />
                     <span className="origin-left duration-300">Usuários</span>
-                </Link>
+                </Link> 
+                <Link
+                    href={route('settings.index')}
+                    as="button"
+                    className={`flex items-center h-10 p-2 text-sm gap-x-2 text-gray-500 hover:bg-gray-100 px-3 w-full ${route().current('settings.*') && 'bg-gray-100'}`}
+                >
+                    <MdOutlineTune size={20} />
+                    <span className="origin-left duration-300">Configurações</span>
+                </Link> 
                 <Link
                     href={route('logout')}
                     method="post"

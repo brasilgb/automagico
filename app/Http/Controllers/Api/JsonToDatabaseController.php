@@ -49,16 +49,12 @@ class JsonToDatabaseController extends Controller
         // Total::withoutGlobalScope(OrganizationScope::class);
 
         if ($request->type === "venda") {
-            foreach (array_slice($request->dbdata, 0, 1) as $fdt) {
-                $dataKey = $fdt["resumo_cnpj"] . $fdt["resumo_datmvt"];
-            }
             $salesdesc = Sale::where('cnpj', $request->dbdata[0]["resumo_cnpj"])->orderByDesc('id');
             $compop = Company::where('cnpj', $request->dbdata[0]["resumo_cnpj"]);
-            $compid = $compop->first()->id;
             foreach ($request->dbdata as $dbdata) {
                 $dataven[] = [
                     "organization_id" => $compop->first()->organization_id,
-                    "key" => $dbdata['resumo_cnpj'] . $dbdata['resumo_datmvt'],
+                    "key" => $compop->first()->organization_id . $dbdata['resumo_codfil'] . $dbdata['resumo_cnpj'] . $dbdata['resumo_datmvt'],
                     "cnpj" => $dbdata['resumo_cnpj'],
                     "filial" => $dbdata['resumo_codfil'],
                     "descfilial" => $dbdata['resumo_desfil'],
@@ -80,7 +76,7 @@ class JsonToDatabaseController extends Controller
                     return $this->responseInsert('venda');
                 } else {
                     foreach ($request->dbdata as $dbdata) {
-                        Sale::where('key', $dbdata['resumo_cnpj'] . $dbdata['resumo_datmvt'])->delete();
+                        Sale::where('key', $compop->first()->organization_id . $dbdata['resumo_codfil'] . $dbdata['resumo_cnpj'] . $dbdata['resumo_datmvt'])->delete();
                     }
                     Sale::insert($dataven);
                     return $this->responseUpdate('venda');
@@ -89,16 +85,12 @@ class JsonToDatabaseController extends Controller
         }
 
         if ($request->type === "assoc") {
-            foreach (array_slice($request->dbdata, 0, 1) as $fdt) {
-                $dataKey = $fdt["assoc_cnpj"] . $fdt["assoc_datmvt"] . $fdt['assoc_ass'];
-            }
             $salesdesc = Association::where('cnpj', $request->dbdata[0]["assoc_cnpj"])->orderByDesc('id');
             $compop = Company::where('cnpj', $request->dbdata[0]["assoc_cnpj"]);
-            $compid = $compop->first()->id;
             foreach ($request->dbdata as $dbdata) {
                 $datass[] = [
                     "organization_id" => $compop->first()->organization_id,
-                    "key" => $dbdata['assoc_cnpj'] . $dbdata['assoc_datmvt'] . $dbdata['assoc_ass'],
+                    "key" => $compop->first()->organization_id . $dbdata['assoc_filial'] . $dbdata['assoc_cnpj'] . $dbdata['assoc_datmvt'] . $dbdata['assoc_ass'],
                     "cnpj" => $dbdata['assoc_cnpj'],
                     "filial" => $dbdata['assoc_filial'],
                     "dtvenda" => $dbdata['assoc_datmvt'],
@@ -120,7 +112,7 @@ class JsonToDatabaseController extends Controller
                     return $this->responseInsert('associação');
                 } else {
                     foreach ($request->dbdata as $dbdata) {
-                        Association::where('key', $dbdata['assoc_cnpj'] . $dbdata['assoc_datmvt'] . $dbdata['assoc_ass'])->delete();
+                        Association::where('key', $compop->first()->organization_id . $dbdata['assoc_filial'] . $dbdata['assoc_cnpj'] . $dbdata['assoc_datmvt'] . $dbdata['assoc_ass'])->delete();
                     }
                     Association::insert($datass);
                     return $this->responseUpdate('associação');
@@ -131,11 +123,10 @@ class JsonToDatabaseController extends Controller
         if ($request->type ===  "total") {
             $salesdesc = Total::where('cnpj', $request->dbdata[0]["total_cnpj"])->orderByDesc('id');
             $compop = Company::where('cnpj', $request->dbdata[0]["total_cnpj"]);
-            $compid = $compop->first()->id;
             foreach ($request->dbdata as $dbdata) {
                 $datatot[] = [
                     "organization_id" => $compop->first()->organization_id,
-                    "key" => $dbdata['total_cnpj'] . $dbdata['total_datatu'],
+                    "key" => $compop->first()->organization_id . $dbdata['total_filial'] . $dbdata['total_cnpj'] . $dbdata['total_datatu'],
                     "cnpj" => $dbdata['total_cnpj'],
                     "filial" => $dbdata['total_filial'],
                     "datatu" => $dbdata['total_datatu'],
@@ -161,7 +152,7 @@ class JsonToDatabaseController extends Controller
                     return $this->responseInsert('total');
                 } else {
                     foreach ($request->dbdata as $dbdata) {
-                        Total::where('key', $dbdata["total_cnpj"] . $dbdata["total_datatu"])->delete();
+                        Total::where('key', $compop->first()->organization_id . $dbdata['total_filial'] . $dbdata['total_cnpj'] . $dbdata['total_datatu'])->delete();
                     }
                     Total::insert($datatot);
                     return $this->responseUpdate('total');

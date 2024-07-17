@@ -21,30 +21,31 @@ import AppLoading from "@/Components/AppLoading";
 
 const Home = ({ companies }: any) => {
   const { auth } = usePage().props as any;
-  const { filialAnalise, dataFiltro } = useAuthContext();
+  const { filialAnalise, dataFiltro, loading, setLoading } = useAuthContext();
   const [totals, setTotals] = useState<any>([]);
   const [graficoVendas, setGraficoVendas] = useState<any>([]);
-  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const getTotals = async () => {
       setLoading(true);
-      await apiautomagico.get(`totais?dt=${moment(dataFiltro).format("YYYYMMDD")}&fl=${filialAnalise}`)
+      await apiautomagico.get(`totais?dt=${moment(dataFiltro).format("YYYYMMDD")}&org=${auth.user?.organization_id}&fl=${filialAnalise}`)
         .then((response) => {
           const { totals } = response.data.response;
-          setTotals(totals);
+          console.log(totals);
+          
           setLoading(false);
+          setTotals(totals);
         })
         .catch((err) => {
           console.log(err);
         })
     };
     getTotals();
-  }, [dataFiltro, filialAnalise]);
+  }, [dataFiltro, filialAnalise, auth]);
 
   useEffect(() => {
     const getGraficoVendas = async () => {
-      await apiautomagico.get(`graficovendas?dt=${moment(dataFiltro).format("YYYYMM")}&fl=${filialAnalise}`)
+      await apiautomagico.get(`graficovendas?dt=${moment(dataFiltro).format("YYYYMM")}&org=${auth.user?.organization_id}&fl=${filialAnalise}`)
         .then((response) => {
           const { saleschart } = response.data.response;
           setGraficoVendas(saleschart);
@@ -55,7 +56,7 @@ const Home = ({ companies }: any) => {
         })
     };
     getGraficoVendas();
-  }, [dataFiltro, filialAnalise]);
+  }, [dataFiltro, filialAnalise, auth]);
 
   return (
     <>
@@ -74,20 +75,20 @@ const Home = ({ companies }: any) => {
                   <AnaliseRede />
                 }
               </div>
-              {!totals &&
+              {totals.length === 0 &&
                 <div className="bg-cyan-600 text-white flex items-center justify-start rounded-md shadow-sm md:mt-4 mt-2 py-2 px-3">
                   <IoInformationCircle size={25} /><span className="text-sm ml-2">Não há dados a serem mostrados no momento</span>
                 </div>
               }
-              {totals &&
+              {totals.length > 0 &&
+              <>
                 <div className="grid md:gap-4 gap-2 md:grid-cols-4 grid-cols-2 md:mt-4 mt-2">
                   <Kpi icon={<AiOutlineLineChart />} iconcolor="text-blue-700" title="Meta" value={MoneyptBR(totals?.valmeta)} bgcolor="bg-blue-200" textcolor="text-blue-700" />
                   <Kpi icon={<GiPayMoney />} iconcolor="text-green-700" title="Faturamento" value={MoneyptBR(totals?.valven)} bgcolor="bg-green-200" textcolor="text-green-700" />
                   <Kpi icon={<FaMoneyBillTrendUp />} iconcolor="text-yellow-700" title="Val. Juros" value={MoneyptBR(totals?.valjur)} bgcolor="bg-green-200" textcolor="text-green-700" />
                   <Kpi icon={<FaMoneyBillTrendUp />} iconcolor="text-yellow-700" title="Val. Ina." value={MoneyptBR(totals?.valina)} bgcolor="bg-green-200" textcolor="text-green-700" />
                 </div>
-              }
-              {totals &&
+              
                 <div className="grid md:gap-4 gap-2 md:grid-cols-4 grid-cols-2 md:mt-4 mt-2">
                   <div className='bg-white p-4 shadow-md rounded-md'>
                     <Progress value={totals?.permet} colorBar="#FF5003" colorText="#FF5003" title='Meta' height={100} />
@@ -102,6 +103,7 @@ const Home = ({ companies }: any) => {
                     <Progress value={totals?.perina} colorBar="#FFAE08" colorText="#FFAE08" title='Inadimplência' height={100} />
                   </div>
                 </div>
+                </>
               }
               {graficoVendas?.length > 0 &&
                 <div className="md:mt-4 mt-2 p-2 flex flex-col bg-white rounded-md shadow-md">
