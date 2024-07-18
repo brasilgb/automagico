@@ -31,14 +31,11 @@ const Home = ({ companies }: any) => {
       await apiautomagico.get(`totais?dt=${moment(dataFiltro).format("YYYYMMDD")}&org=${auth.user?.organization_id}&fl=${filialAnalise}`)
         .then((response) => {
           const { totals } = response.data.response;
-          console.log(totals);
-          
-          setLoading(false);
           setTotals(totals);
         })
         .catch((err) => {
           console.log(err);
-        })
+        }).finally(() => setLoading(false));
     };
     getTotals();
   }, [dataFiltro, filialAnalise, auth]);

@@ -30,11 +30,10 @@ const Association = () => {
         .then((response) => {
           const { association } = response.data.response;
           setAutoMagicoAssociation(association);
-          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
-        })
+        }).finally(() => setLoading(false));
     };
     getAutoMagicoAssociation();
   }, [dataFiltro, filialAnalise, auth]);

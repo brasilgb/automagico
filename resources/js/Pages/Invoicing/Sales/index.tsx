@@ -29,12 +29,10 @@ const Sales = () => {
         .then((response) => {
           const { totals } = response.data.response;
           setTotals(totals);
-          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
-
-        })
+        }).finally(() => setLoading(false));
     };
     getTotals();
   }, [dataFiltro, filialAnalise, auth]);
