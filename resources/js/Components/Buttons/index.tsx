@@ -205,3 +205,19 @@ export const SaveButton = ({ processing, value = "Salvar", title }: ButtonsProps
         </div>
     );
 };
+
+export const DBButton = ({ processing, value = "Salvar", title }: ButtonsProps) => {
+    return (
+        <div className="flex justify-end">
+            <button
+                className="flex items-center justify-center bg-blue-700 hover:bg-blue-600 py-1.5 px-3 rounded-md shadow text-gray-50 self-end"
+                disabled={processing}
+                type="submit"
+                title={title}
+            >
+                <IoSave size={18} />
+                <span className="ml-1">{value}</span>
+            </button>
+        </div>
+    );
+};
