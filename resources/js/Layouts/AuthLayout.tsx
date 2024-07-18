@@ -8,7 +8,11 @@ export default function AuthLayout({ children }: PropsWithChildren) {
             <div className="w-full sm:max-w-md mt-6 px-6 py-8 bg-gradient-to-t from-gray-200 via-gray-50 to-gray-200 shadow-md overflow-hidden rounded-md border border-white">
                 <div className="flex justify-center mb-8 py-6">
                     <Link href="/">
-                        <ApplicationLogo className="w-48 fill-current text-gray-500" />
+                        <img
+                            className=""
+                            src="/storage/images/automahost_icon.png"
+                            alt="Logo"
+                        />
                     </Link>
                 </div>
                 <div>
