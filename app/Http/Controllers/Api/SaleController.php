@@ -26,7 +26,7 @@ class SaleController extends Controller
             "response" => [
                 "success" => true,
                 "status" => 201,
-                "sales" => $wquery ? $sales : []
+                "sales" => $sales
             ],
         ], 201);
     }
@@ -45,7 +45,7 @@ class SaleController extends Controller
             "response" => [
                 "success" => true,
                 "status" => 201,
-                "saleschart" => $wquery ? $saleschart : []
+                "saleschart" => $saleschart
             ],
         ], 201);
     }

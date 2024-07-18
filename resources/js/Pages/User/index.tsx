@@ -54,7 +54,7 @@ const User = ({ users }: any) => {
                         </CardHeader>
                         <FlashMessage message={'flash'} />
                         <CardBody className="p-1">
-                            <Table className="bg-megb-blue-secundary w-full">
+                            <Table className="w-full">
                                 <TableHeader>
                                     <TableRow>
                                         <TableHead>#</TableHead>

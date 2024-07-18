@@ -24,7 +24,7 @@ class TotalController extends Controller
             "response" => [
                 "success" => true,
                 "status" => 201,
-                "totals" => $wquery ? $totals : [],
+                "totals" => $totals
             ],
         ], 201);
     }

@@ -57,7 +57,7 @@ const Sales = () => {
     <>
       {loading && <AppLoading />}
       <Head title="Vendas" />
-      {autoMagicoSales.length > 0 &&
+      {autoMagicoSales &&
         <Table className="rounded-t-md w-full animate__animated animate__fadeIn">
           <TableHeader>
             <TableRow>
@@ -95,7 +95,7 @@ const Sales = () => {
           </TableBody>
         </Table>
       }
-      {autoMagicoSales.length === 0 &&
+      {!autoMagicoSales &&
         <div className="bg-cyan-600 text-white flex items-center justify-start rounded-md shadow-sm md:mt-4 mt-2 py-2 px-3">
           <IoInformationCircle size={25} /><span className="text-sm ml-2">Não há dados a serem mostrados no momento</span>
         </div>

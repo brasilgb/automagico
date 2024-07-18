@@ -12,9 +12,9 @@ class SettingsController extends Controller
 {
     public function index()
     {
-        if (Settings::get()->isEmpty()) {
-
-            Settings::create();
+        $settings = Settings::where('organization_id', auth()->user()->organization_id)->first();
+        if (!$settings) {
+            Settings::create(['organization_id' => auth()->user()->organization_id]);
         }
         $settings = Settings::first();
         return Inertia::render('Settings/index', ['settings' => $settings]);

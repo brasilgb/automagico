@@ -36,45 +36,45 @@ const Settings = ({ settings }: any) => {
         setData,
     }: InertiaFormProps<ClientesProps> = useForm({
         logo: null,
-        headerbg: settings.headerbg,
-        headertext: settings.headertext,
-        buttonbg: settings.buttonbg,
-        buttontext: settings.buttontext,
-        buttonbgactive: settings.buttonbgactive,
-        buttontextactive: settings.buttontextactive,
-        secundarybarbg: settings.secundarybarbg,
-        secundarybartext: settings.secundarybartext,
-        analisebg: settings.analisebg,
-        analisetext: settings.analisetext,
-        buttonanalisebg: settings.buttonanalisebg,
-        buttonanalisetext: settings.buttonanalisetext,
-        buttonanalisebgactive: settings.buttonanalisebgactive,
-        buttonanalisetextactive: settings.buttonanalisetextactive,
-        footerbg: settings.footerbg,
-        footertext: settings.footertext
+        headerbg: settings?.headerbg,
+        headertext: settings?.headertext,
+        buttonbg: settings?.buttonbg,
+        buttontext: settings?.buttontext,
+        buttonbgactive: settings?.buttonbgactive,
+        buttontextactive: settings?.buttontextactive,
+        secundarybarbg: settings?.secundarybarbg,
+        secundarybartext: settings?.secundarybartext,
+        analisebg: settings?.analisebg,
+        analisetext: settings?.analisetext,
+        buttonanalisebg: settings?.buttonanalisebg,
+        buttonanalisetext: settings?.buttonanalisetext,
+        buttonanalisebgactive: settings?.buttonanalisebgactive,
+        buttonanalisetextactive: settings?.buttonanalisetextactive,
+        footerbg: settings?.footerbg,
+        footertext: settings?.footertext
     });
 
     function handleSubmit(e: any) {
         e.preventDefault();
         router.post(`settings/${settings.id}`, {
             _method: "put",
-            logo: data.logo,
-            headerbg: data.headerbg,
-            headertext: data.headertext,
-            buttonbg: data.buttonbg,
-            buttontext: data.buttontext,
-            buttonbgactive: data.buttonbgactive,
-            buttontextactive: data.buttontextactive,
-            secundarybarbg: data.secundarybarbg,
-            secundarybartext: data.secundarybartext,
-            analisebg: data.analisebg,
-            analisetext: data.analisetext,
-            buttonanalisebg: data.buttonanalisebg,
-            buttonanalisetext: data.buttonanalisetext,
-            buttonanalisebgactive: data.buttonanalisebgactive,
-            buttonanalisetextactive: data.buttonanalisetextactive,
-            footerbg: data.footerbg,
-            footertext: data.footertext,
+            logo: data?.logo,
+            headerbg: data?.headerbg,
+            headertext: data?.headertext,
+            buttonbg: data?.buttonbg,
+            buttontext: data?.buttontext,
+            buttonbgactive: data?.buttonbgactive,
+            buttontextactive: data?.buttontextactive,
+            secundarybarbg: data?.secundarybarbg,
+            secundarybartext: data?.secundarybartext,
+            analisebg: data?.analisebg,
+            analisetext: data?.analisetext,
+            buttonanalisebg: data?.buttonanalisebg,
+            buttonanalisetext: data?.buttonanalisetext,
+            buttonanalisebgactive: data?.buttonanalisebgactive,
+            buttonanalisetextactive: data?.buttonanalisetextactive,
+            footerbg: data?.footerbg,
+            footertext: data?.footertext,
         });
     }
     return (
@@ -95,7 +95,7 @@ const Settings = ({ settings }: any) => {
                             <div className="px-3 my-4">
                                 <div className="w-24 my-10">
                                     <img
-                                        src={`/storage/images/${settings.logo ? settings.logo : "default.png"}`}
+                                        src={`/storage/images/${settings?.logo ? settings?.logo : "default.png"}`}
                                         alt="Imagem de logo"
                                     />
                                 </div>

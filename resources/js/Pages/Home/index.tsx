@@ -80,7 +80,7 @@ const Home = ({ companies }: any) => {
                   <IoInformationCircle size={25} /><span className="text-sm ml-2">Não há dados a serem mostrados no momento</span>
                 </div>
               }
-              {totals.length > 0 &&
+              {totals &&
               <>
                 <div className="grid md:gap-4 gap-2 md:grid-cols-4 grid-cols-2 md:mt-4 mt-2">
                   <Kpi icon={<AiOutlineLineChart />} iconcolor="text-blue-700" title="Meta" value={MoneyptBR(totals?.valmeta)} bgcolor="bg-blue-200" textcolor="text-blue-700" />
@@ -105,7 +105,7 @@ const Home = ({ companies }: any) => {
                 </div>
                 </>
               }
-              {graficoVendas?.length > 0 &&
+              {graficoVendas &&
                 <div className="md:mt-4 mt-2 p-2 flex flex-col bg-white rounded-md shadow-md">
                   <CHFaturamento data={graficoVendas} />
                 </div>

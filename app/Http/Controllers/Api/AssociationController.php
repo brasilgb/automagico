@@ -26,7 +26,7 @@ class AssociationController extends Controller
             "response" => [
                 "success" => true,
                 "status" => 201,
-                'association' => $wquery ? $association : []
+                'association' => $association
             ],
         ], 201);
     }

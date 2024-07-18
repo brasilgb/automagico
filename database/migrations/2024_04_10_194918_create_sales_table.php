@@ -11,9 +11,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sales', function (Blueprint $table) {
-            $table->id();
+            $table->string('key')->primary()->index();
             $table->foreignId('organization_id')->nullable()->constrained();
-            $table->string('key')->index();
             $table->string('cnpj');
             $table->integer('filial');
             $table->string('descfilial');
