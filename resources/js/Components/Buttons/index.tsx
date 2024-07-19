@@ -17,6 +17,7 @@ import { FaCalendarDays, FaRegTrashCan } from "react-icons/fa6";
 import { IoIosBusiness } from "react-icons/io";
 import { useAuthContext } from "@/Contexts";
 import moment from "moment";
+import { BsDatabaseFillDash } from "react-icons/bs";
 
 interface ButtonsProps {
     url?: any;
@@ -31,6 +32,7 @@ interface ButtonsProps {
     sttmessage?: number;
     active?: boolean;
     title?: string;
+    datadb?:any;
 }
 
 export const AnaliseButton = ({ onclick, label, active, title }: ButtonsProps) => {
@@ -206,16 +208,17 @@ export const SaveButton = ({ processing, value = "Salvar", title }: ButtonsProps
     );
 };
 
-export const DBButton = ({ processing, value = "Salvar", title }: ButtonsProps) => {
+export const DBButton = ({ processing, value, title, datadb }: ButtonsProps) => {
     return (
         <div className="flex justify-end">
             <button
+                onClick={datadb}
                 className="flex items-center justify-center bg-blue-700 hover:bg-blue-600 py-1.5 px-3 rounded-md shadow text-gray-50 self-end"
                 disabled={processing}
                 type="submit"
                 title={title}
             >
-                <IoSave size={18} />
+                <BsDatabaseFillDash size={18} />
                 <span className="ml-1">{value}</span>
             </button>
         </div>

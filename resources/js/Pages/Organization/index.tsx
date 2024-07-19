@@ -1,4 +1,4 @@
-import { AddButton, DeleteButton, EditButton, FilialButton } from '@/Components/Buttons'
+import { AddButton, DBButton, DeleteButton, EditButton, FilialButton } from '@/Components/Buttons'
 import { Card, CardBody, CardContainer, CardFooter, CardHeader, CardHeaderContent } from '@/Components/Card'
 import FlashMessage from '@/Components/FlashMessage'
 import InputSearch from '@/Components/InputSearch'
@@ -84,6 +84,7 @@ const Organization = ({ organizations }: any) => {
                                                 <span className={`py-1 px-3 text-sm text-gray-100 font-medium rounded-full ${colorsStatus(organization.status)}`}>{statusValueByLabel(organization.status)}</span>
                                             </TableCell>
                                             <TableCell className="flex items-center justify-end gap-2">
+                                                <DBButton />
                                                 <FilialButton
                                                     url={`companies?o=${organization.id}`}
                                                     title="Filiais da organização"
