@@ -39,6 +39,7 @@ const Home = ({ companies }: any) => {
     };
     getTotals();
   }, [dataFiltro, filialAnalise, auth]);
+console.log(totals);
 
   useEffect(() => {
     const getGraficoVendas = async () => {
@@ -60,6 +61,7 @@ const Home = ({ companies }: any) => {
       {loading && <AppLoading />}
       <AuthenticatedLayout>
         <Head title="Dashboard" />
+        <div>{auth.user?.organization_id} - {filialAnalise}</div>
         <main className=''>
           {auth?.user?.organization_id !== null &&
             <>

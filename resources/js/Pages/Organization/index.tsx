@@ -84,7 +84,12 @@ const Organization = ({ organizations }: any) => {
                                                 <span className={`py-1 px-3 text-sm text-gray-100 font-medium rounded-full ${colorsStatus(organization.status)}`}>{statusValueByLabel(organization.status)}</span>
                                             </TableCell>
                                             <TableCell className="flex items-center justify-end gap-2">
-                                                <DBButton />
+                                                <DBButton
+                                                    url="organizations.destroy"
+                                                    param={organization.id}
+                                                    identify={`${organization.name}`}
+                                                    title='Limpar Base de dados'
+                                                />
                                                 <FilialButton
                                                     url={`companies?o=${organization.id}`}
                                                     title="Filiais da organização"

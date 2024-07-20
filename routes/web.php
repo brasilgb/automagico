@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'isRoot'])->group(function () {
     Route::resource('/companies', CompanyController::class);
     Route::resource('/organizations', OrganizationController::class);
+    Route::get('/deleteorgdata/{id}', [OrganizationController::class, 'deleteorgdata'])->name('deleteorgdata');
 });
 
 Route::middleware(['auth', 'isClient'])->group(function () {

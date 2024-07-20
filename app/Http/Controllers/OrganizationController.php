@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Association;
 use App\Models\Organization;
+use App\Models\Sale;
 use App\Models\Settings;
+use App\Models\Total;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -98,6 +101,18 @@ class OrganizationController extends Controller
     {
         $organization->delete();
         Session::flash('success', 'Organização deletada com sucesso');
+        return redirect()->route('organizations.index');
+    }
+
+    public function deleteorgdata($id)
+    {
+        $sale = Sale::where('organization_id', $id);
+        $sale->delete();
+        $associacao = Association::where('organization_id', $id);
+        $associacao->delete();
+        $total = Total::where('organization_id', $id);
+        $total->delete();
+        Session::flash('success', 'Base de dados da organização limpa com sucesso!');
         return redirect()->route('organizations.index');
     }
 }
