@@ -46,7 +46,6 @@ const Association = () => {
         <Table className="rounded-t-md w-full animate__animated animate__fadeIn">
           <TableHeader>
             <TableRow>
-              <TableHead>#</TableHead>
               <TableHead>Associação</TableHead>
               <TableHead>Desc. Associação</TableHead>
               <TableHead>Data venda</TableHead>
@@ -59,8 +58,7 @@ const Association = () => {
           <TableHeader>
             {autoMagicoAssociation.filter((total: any) => (total.assoc === 'XX')).map((assoc: any, idx: number) => (
               <TableRow className={`${idx % 2 === 0 ? 'bg-gray-50' : 'bg-gray-100'}`}>
-                <TableHead>Total</TableHead>
-                <TableHead>{assoc.assoc}</TableHead>
+                <TableHead></TableHead>
                 <TableHead>{assoc.descassoc}</TableHead>
                 <TableHead>{moment(assoc.dtvenda).format("DD/MM/YYYY")}</TableHead>
                 <TableHead>{MoneyptBR(assoc.valmeta)}</TableHead>
@@ -73,7 +71,6 @@ const Association = () => {
           <TableBody>
             {autoMagicoAssociation.filter((f: any) => (f.assoc !== 'XX')).map((assoc: any, idx: number) => (
               <TableRow className={`${idx % 2 === 0 ? 'bg-gray-50' : 'bg-gray-100'} text-gray-500`}>
-                <TableCell>{assoc.id}</TableCell>
                 <TableCell>{assoc.assoc}</TableCell>
                 <TableCell>{assoc.descassoc}</TableCell>
                 <TableCell>{moment(assoc.dtvenda).format("DD/MM/YYYY")}</TableCell>

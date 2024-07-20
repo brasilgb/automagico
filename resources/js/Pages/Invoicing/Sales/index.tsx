@@ -59,7 +59,6 @@ const Sales = () => {
         <Table className="rounded-t-md w-full animate__animated animate__fadeIn">
           <TableHeader>
             <TableRow>
-              <TableHead>#</TableHead>
               <TableHead>Data venda</TableHead>
               <TableHead>Meta</TableHead>
               <TableHead>Venda</TableHead>
@@ -70,7 +69,6 @@ const Sales = () => {
           <TableHeader>
             {totals &&
               <TableRow className='bg-gray-100'>
-                <TableHead>Total</TableHead>
                 <TableHead>{moment(totals?.datatu).format("DD/MM/YYYY")}</TableHead>
                 <TableHead>{MoneyptBR(totals?.valmeta)}</TableHead>
                 <TableHead>{MoneyptBR(totals?.valven)}</TableHead>
@@ -82,7 +80,6 @@ const Sales = () => {
           <TableBody>
             {autoMagicoSales.map((sale: any, idx: number) => (
               <TableRow className={`${idx % 2 === 0 ? 'bg-gray-50' : 'bg-gray-100'}`}>
-                <TableCell>{sale.id}</TableCell>
                 <TableCell>{moment(sale.dtvenda).format("DD/MM/YYYY")}</TableCell>
                 <TableCell>{MoneyptBR(sale.valmeta)}</TableCell>
                 <TableCell>{MoneyptBR(sale.valvenda)}</TableCell>

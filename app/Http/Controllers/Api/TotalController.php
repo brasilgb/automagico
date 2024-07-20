@@ -10,7 +10,6 @@ class TotalController extends Controller
 {
     public function getTotals(Request $request)
     {
-
         $wquery = Total::where('datatu', $request->dt)->where('organization_id', $request->org)->where('filial', $request->fl)->first();
         if ($wquery) {
             $totals = Total::where('datatu', $request->dt)->where('organization_id', $request->org)->where('filial', $request->fl)->first();

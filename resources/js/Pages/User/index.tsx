@@ -57,10 +57,9 @@ const User = ({ users }: any) => {
                             <Table className="w-full">
                                 <TableHeader>
                                     <TableRow>
-                                        <TableHead>#</TableHead>
-                                        <TableHead>Organização</TableHead>
                                         <TableHead>Nome</TableHead>
                                         <TableHead>E-mail</TableHead>
+                                        <TableHead>Organização</TableHead>
                                         <TableHead>Permissões</TableHead>
                                         <TableHead>Cadastro</TableHead>
                                         <TableHead>Status</TableHead>
@@ -71,15 +70,14 @@ const User = ({ users }: any) => {
                                     {users.data.map((user: any, idx: number) => (
                                         <Fragment key={user?.id}>
                                             <TableRow className={`${idx % 2 === 0 ? 'bg-gray-50' : 'bg-gray-100'}`}>
-                                                <TableCell>{user?.id}</TableCell>
-                                                <TableCell>
-                                                    {user?.organization?.name}
-                                                </TableCell>
                                                 <TableCell>
                                                     {user?.name}
                                                 </TableCell>
                                                 <TableCell>
                                                     {user?.email}
+                                                </TableCell>
+                                                <TableCell>
+                                                    {user?.organization?.name}
                                                 </TableCell>
                                                 <TableCell>
                                                     {roleUserByValue(user?.roles)}

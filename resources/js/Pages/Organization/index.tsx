@@ -55,7 +55,7 @@ const Organization = ({ organizations }: any) => {
                     </CardHeader>
                     <FlashMessage message={flash} />
                     <CardBody>
-                        <Table className="bg-megb-blue-secundary w-full">
+                        <Table className="w-full">
                             <TableHeader>
                                 <TableRow>
                                     <TableHead><div className="">Organização</div></TableHead>

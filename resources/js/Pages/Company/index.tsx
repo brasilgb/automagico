@@ -56,7 +56,7 @@ const Company = ({ companies }: any) => {
                     </CardHeader>
                     <FlashMessage message={'flash'} />
                     <CardBody>
-                        <Table className="bg-megb-blue-secundary w-full">
+                        <Table className="w-full">
                             <TableHeader>
                                 <TableRow>
                                     <TableHead>Organização</TableHead>

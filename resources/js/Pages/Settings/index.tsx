@@ -1,4 +1,4 @@
-import { AddButton, SaveButton } from '@/Components/Buttons'
+import { AddButton, ResetStylesButton, SaveButton } from '@/Components/Buttons'
 import { Card, CardBody, CardContainer, CardFooter, CardHeader, CardHeaderContent } from '@/Components/Card'
 import FlashMessage from '@/Components/FlashMessage'
 import { BreadCrumbTop, HeaderContent, TitleTop } from '@/Components/PageTop'
@@ -34,24 +34,26 @@ const Settings = ({ settings }: any) => {
     const {
         data,
         setData,
+        reset,
+        clearErrors
     }: InertiaFormProps<ClientesProps> = useForm({
         logo: null,
-        headerbg: settings?.headerbg,
-        headertext: settings?.headertext,
-        buttonbg: settings?.buttonbg,
-        buttontext: settings?.buttontext,
-        buttonbgactive: settings?.buttonbgactive,
-        buttontextactive: settings?.buttontextactive,
-        secundarybarbg: settings?.secundarybarbg,
-        secundarybartext: settings?.secundarybartext,
-        analisebg: settings?.analisebg,
-        analisetext: settings?.analisetext,
-        buttonanalisebg: settings?.buttonanalisebg,
-        buttonanalisetext: settings?.buttonanalisetext,
-        buttonanalisebgactive: settings?.buttonanalisebgactive,
-        buttonanalisetextactive: settings?.buttonanalisetextactive,
-        footerbg: settings?.footerbg,
-        footertext: settings?.footertext
+        headerbg: settings?.headerbg?settings?.headerbg:'',
+        headertext: settings?.headertext?settings?.headertext:'',
+        buttonbg: settings?.buttonbg?settings?.buttonbg:'',
+        buttontext: settings?.buttontext?settings?.buttontext:'',
+        buttonbgactive: settings?.buttonbgactive?settings?.buttonbgactive:'',
+        buttontextactive: settings?.buttontextactive?settings?.buttontextactive:'',
+        secundarybarbg: settings?.secundarybarbg?settings?.secundarybarbg:'',
+        secundarybartext: settings?.secundarybartext?settings?.secundarybartext:'',
+        analisebg: settings?.analisebg?settings?.analisebg:'',
+        analisetext: settings?.analisetext?settings?.analisetext:'',
+        buttonanalisebg: settings?.buttonanalisebg?settings?.buttonanalisebg:'',
+        buttonanalisetext: settings?.buttonanalisetext?settings?.buttonanalisetext:'',
+        buttonanalisebgactive: settings?.buttonanalisebgactive?settings?.buttonanalisebgactive:'',
+        buttonanalisetextactive: settings?.buttonanalisetextactive?settings?.buttonanalisetextactive:'',
+        footerbg: settings?.footerbg?settings?.footerbg:'',
+        footertext: settings?.footertext?settings?.footertext:''
     });
 
     function handleSubmit(e: any) {
@@ -77,6 +79,34 @@ const Settings = ({ settings }: any) => {
             footertext: data?.footertext,
         });
     }
+    function handleReset(e: any) {
+        e.preventDefault();
+        router.post(`settings/${settings.id}`, {
+            _method: "put",
+            headerbg: null,
+            headertext: null,
+            buttonbg: null,
+            buttontext: null,
+            buttonbgactive: null,
+            buttontextactive: null,
+            secundarybarbg: null,
+            secundarybartext: null,
+            analisebg: null,
+            analisetext: null,
+            buttonanalisebg: null,
+            buttonanalisetext: null,
+            buttonanalisebgactive: null,
+            buttonanalisetextactive: null,
+            footerbg: null,
+            footertext: null,
+        }, {
+            onSuccess: () => {
+				reset();
+				clearErrors();
+			}
+        });
+    }
+
     return (
         <AuthenticatedLayout>
             <Head title="Configurações" />
@@ -90,7 +120,7 @@ const Settings = ({ settings }: any) => {
                 </HeaderContent>
                 <CardContainer>
                     <FlashMessage message={flash} />
-                    <form onSubmit={handleSubmit} autoComplete="off">
+                    <form onSubmit={handleSubmit} onReset={handleReset} autoComplete="off">
                         <CardBody>
                             <div className="px-3 my-4">
                                 <div className="w-24 my-10">
@@ -490,7 +520,8 @@ const Settings = ({ settings }: any) => {
                                 </div>
                             </div>
                         </CardBody>
-                        <CardFooter>
+                        <CardFooter className="flex items-center justify-end gap-4">
+                            <ResetStylesButton />
                             <SaveButton />
                         </CardFooter>
                     </form>

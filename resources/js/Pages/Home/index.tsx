@@ -34,12 +34,11 @@ const Home = ({ companies }: any) => {
           setTotals(totals);
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err.message);
         }).finally(() => setLoading(false));
     };
     getTotals();
   }, [dataFiltro, filialAnalise, auth]);
-console.log(totals);
 
   useEffect(() => {
     const getGraficoVendas = async () => {
@@ -61,7 +60,6 @@ console.log(totals);
       {loading && <AppLoading />}
       <AuthenticatedLayout>
         <Head title="Dashboard" />
-        <div>{auth.user?.organization_id} - {filialAnalise}</div>
         <main className=''>
           {auth?.user?.organization_id !== null &&
             <>

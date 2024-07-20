@@ -1,4 +1,4 @@
-import { Link, useForm, usePage } from "@inertiajs/react";
+import { Link, router, useForm, usePage } from "@inertiajs/react";
 import React, { useState } from "react";
 import {
     IoAdd,
@@ -14,7 +14,7 @@ import {
 } from "react-icons/io5";
 import { TbEdit } from "react-icons/tb";
 import { FaCalendarDays, FaRegTrashCan } from "react-icons/fa6";
-import { IoIosBusiness } from "react-icons/io";
+import { IoIosBusiness, IoIosColorPalette } from "react-icons/io";
 import { useAuthContext } from "@/Contexts";
 import moment from "moment";
 import { BsDatabaseFillDash } from "react-icons/bs";
@@ -33,6 +33,7 @@ interface ButtonsProps {
     active?: boolean;
     title?: string;
     datadb?: any;
+    reset?: any;
 }
 
 export const AnaliseButton = ({ onclick, label, active, title }: ButtonsProps) => {
@@ -192,11 +193,28 @@ export const DeleteButton = ({ identify, param, url, title }: ButtonsProps) => {
     );
 };
 
+export const ResetStylesButton = ({ processing, value = "Limpar estilos", title }: ButtonsProps) => {
+
+    return (
+        <div className="flex justify-end">
+            <button
+                className="flex items-center justify-center bg-orange-600 hover:bg-orange-600/90 transition-colors duration-300 py-1.5 px-3 rounded-md shadow text-gray-50 self-end"
+                disabled={processing}
+                type="reset"
+                title={title}
+            >
+                <IoIosColorPalette size={20} />
+                <span className="ml-1">{value}</span>
+            </button>
+        </div>
+    );
+};
+
 export const SaveButton = ({ processing, value = "Salvar", title }: ButtonsProps) => {
     return (
         <div className="flex justify-end">
             <button
-                className="flex items-center justify-center bg-blue-700 hover:bg-blue-600 py-1.5 px-3 rounded-md shadow text-gray-50 self-end"
+                className="flex items-center justify-center bg-blue-700 hover:bg-blue-700/90 transition-colors duration-300 py-1.5 px-3 rounded-md shadow text-gray-50 self-end"
                 disabled={processing}
                 type="submit"
                 title={title}
@@ -208,7 +226,7 @@ export const SaveButton = ({ processing, value = "Salvar", title }: ButtonsProps
     );
 };
 
-export const DBButton = ({ identify, param, url, title }: ButtonsProps) => {
+export const DBButton = ({ identify, param, title }: ButtonsProps) => {
     const { auth } = usePage().props as any;
     const [showConfirme, setShowConfirme] = useState(false);
     const { get } = useForm();
@@ -281,7 +299,7 @@ export const DBButton = ({ identify, param, url, title }: ButtonsProps) => {
                     title={title}
                 >
                     <BsDatabaseFillDash size={18} />
-                    <span className="">{}</span>
+                    <span className="">{ }</span>
                 </button>
             </div>
         </>

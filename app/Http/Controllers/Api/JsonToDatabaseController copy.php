@@ -49,7 +49,7 @@ class JsonToDatabaseController extends Controller
         // Total::withoutGlobalScope(OrganizationScope::class);
 
         if ($request->type === "venda") {
-            $salesdesc = Sale::where('cnpj', $request->dbdata[0]["resumo_cnpj"])->first();
+            $salesdesc = Sale::where('cnpj', $request->dbdata[0]["resumo_cnpj"])->orderByDesc('id');
             $compop = Company::where('cnpj', $request->dbdata[0]["resumo_cnpj"]);
             foreach ($request->dbdata as $dbdata) {
                 $dataven[] = [
@@ -85,7 +85,7 @@ class JsonToDatabaseController extends Controller
         }
 
         if ($request->type === "assoc") {
-            $salesdesc = Association::where('cnpj', $request->dbdata[0]["assoc_cnpj"])->first();
+            $salesdesc = Association::where('cnpj', $request->dbdata[0]["assoc_cnpj"])->orderByDesc('id');
             $compop = Company::where('cnpj', $request->dbdata[0]["assoc_cnpj"]);
             foreach ($request->dbdata as $dbdata) {
                 $datass[] = [
@@ -121,7 +121,7 @@ class JsonToDatabaseController extends Controller
         }
 
         if ($request->type ===  "total") {
-            $salesdesc = Total::where('cnpj', $request->dbdata[0]["total_cnpj"])->first();
+            $salesdesc = Total::where('cnpj', $request->dbdata[0]["total_cnpj"])->orderByDesc('id');
             $compop = Company::where('cnpj', $request->dbdata[0]["total_cnpj"]);
             foreach ($request->dbdata as $dbdata) {
                 $datatot[] = [
