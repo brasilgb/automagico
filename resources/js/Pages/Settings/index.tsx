@@ -7,6 +7,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Head, router, useForm, usePage } from '@inertiajs/react'
 import { InertiaFormProps } from '@inertiajs/react/types/useForm'
 import React, { useEffect } from 'react'
+import { MdOutlineTune } from 'react-icons/md'
 import { SlOrganization } from 'react-icons/sl'
 
 interface ClientesProps {
@@ -45,15 +46,15 @@ const Settings = ({ settings }: any) => {
         buttonbgactive: settings?.buttonbgactive?settings?.buttonbgactive:'#67821D',
         buttontextactive: settings?.buttontextactive?settings?.buttontextactive:'#FFFFFF',
         secundarybarbg: settings?.secundarybarbg?settings?.secundarybarbg:'#749324',
-        secundarybartext: settings?.secundarybartext?settings?.secundarybartext:'',
-        analisebg: settings?.analisebg?settings?.analisebg:'',
-        analisetext: settings?.analisetext?settings?.analisetext:'',
-        buttonanalisebg: settings?.buttonanalisebg?settings?.buttonanalisebg:'',
-        buttonanalisetext: settings?.buttonanalisetext?settings?.buttonanalisetext:'',
-        buttonanalisebgactive: settings?.buttonanalisebgactive?settings?.buttonanalisebgactive:'',
-        buttonanalisetextactive: settings?.buttonanalisetextactive?settings?.buttonanalisetextactive:'',
-        footerbg: settings?.footerbg?settings?.footerbg:'',
-        footertext: settings?.footertext?settings?.footertext:''
+        secundarybartext: settings?.secundarybartext?settings?.secundarybartext:'#FFFFFF',
+        analisebg: settings?.analisebg?settings?.analisebg:'#FFFFFF',
+        analisetext: settings?.analisetext?settings?.analisetext:'#749324',
+        buttonanalisebg: settings?.buttonanalisebg?settings?.buttonanalisebg:'#a0bc53',
+        buttonanalisetext: settings?.buttonanalisetext?settings?.buttonanalisetext:'#FFFFFF',
+        buttonanalisebgactive: settings?.buttonanalisebgactive?settings?.buttonanalisebgactive:'#67821d',
+        buttonanalisetextactive: settings?.buttonanalisetextactive?settings?.buttonanalisetextactive:'#FFFFFF',
+        footerbg: settings?.footerbg?settings?.footerbg:'#f9fafb',
+        footertext: settings?.footertext?settings?.footertext:'#6b7280'
     });
 
     function handleSubmit(e: any) {
@@ -113,17 +114,17 @@ const Settings = ({ settings }: any) => {
             <Card>
                 <HeaderContent>
                     <TitleTop>
-                        <SlOrganization size={30} />
+                        <MdOutlineTune size={30} />
                         <span className="ml-2">Configurações</span>
                     </TitleTop>
                     <BreadCrumbTop links={[{ url: null, label: "Configurações" }]} />
                 </HeaderContent>
-                <CardContainer>
+                <CardContainer className='bg-white pt-1'>
                     <FlashMessage message={flash} />
                     <form onSubmit={handleSubmit} onReset={handleReset} autoComplete="off">
                         <CardBody>
-                            <div className="px-3 my-4">
-                                <div className="w-24 my-10">
+                            <div className="px-3 my-3">
+                                <div className="w-24 mb-8">
                                     <img
                                         src={`/storage/images/${settings?.logo ? settings?.logo : "default.png"}`}
                                         alt="Imagem de logo"

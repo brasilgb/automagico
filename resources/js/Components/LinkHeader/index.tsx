@@ -17,7 +17,7 @@ const LinkHeader = (props: LinkHeaderProps) => {
                 color: props.active ? auth.settings?.buttontextactive ? auth.settings?.buttontextactive : '#FFFFFF' : auth.settings?.buttontext ? auth.settings?.buttontext : '#FFFFFF'
             }}
             href={route(props.url)}
-            className={`flex items-center gap-2 border border-gray-100/50 uppercase font-semibold text-xs text-center rounded-md py-2 px-3 duration-300`}
+            className={`flex items-center gap-2 border-2 border-gray-50 shadow uppercase font-semibold text-xs text-center rounded-md py-2 px-3 duration-300`}
         >
             {props.icon}
             {props.label}

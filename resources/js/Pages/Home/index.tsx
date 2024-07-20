@@ -65,14 +65,14 @@ const Home = ({ companies }: any) => {
             <>
               <div
                 style={{ backgroundColor: auth.settings?.secundarybarbg ? auth.settings?.secundarybarbg : '#749324', color: auth.settings?.secundarybartext ? auth.settings?.secundarybartext : '#FFFFFF' }}
-                className="flex items-center justify-start p-1 rounded-md md:shadow-md shadow-sm border border-gray-300/50 gap-4">
+                className="flex items-center justify-start p-1 rounded border-white shadow gap-2">
                 <DatePickerSingle route='dashboard' />
                 <FiliaisSelector data={companies} />
                 {auth.user.company_id === null &&
                   <AnaliseRede />
                 }
               </div>
-              {totals.length === 0 &&
+              {!totals &&
                 <div className="bg-cyan-600 text-white flex items-center justify-start rounded-md shadow-sm md:mt-4 mt-2 py-2 px-3">
                   <IoInformationCircle size={25} /><span className="text-sm ml-2">Não há dados a serem mostrados no momento</span>
                 </div>
@@ -87,17 +87,17 @@ const Home = ({ companies }: any) => {
                 </div>
               
                 <div className="grid md:gap-4 gap-2 md:grid-cols-4 grid-cols-2 md:mt-4 mt-2">
-                  <div className='bg-white p-4 shadow-md rounded-md'>
-                    <Progress value={totals?.permet} colorBar="#FF5003" colorText="#FF5003" title='Meta' height={100} />
+                  <div className='bg-white min-h-[212px] p-4 shadow-md rounded-md'>
+                    <Progress value={totals?.permet?totals?.permet:0} colorBar="#FF5003" colorText="#FF5003" title='Meta' height={100} />
                   </div>
-                  <div className='bg-white p-4 shadow-md rounded-md'>
-                    <Progress value={totals?.margem} colorBar="#CA0156" colorText="#CA0156" title='Margem' height={100} />
+                  <div className='bg-white min-h-[212px] p-4 shadow-md rounded-md'>
+                    <Progress value={totals?.margem?totals?.margem:0} colorBar="#CA0156" colorText="#CA0156" title='Margem' height={100} />
                   </div>
-                  <div className='bg-white p-4 shadow-md rounded-md'>
-                    <Progress value={totals?.perjur} colorBar="#0F52BA" colorText="#0F52BA" title='Juros' height={100} />
+                  <div className='bg-white min-h-[212px] p-4 shadow-md rounded-md'>
+                    <Progress value={totals?.perjur?totals?.perjur:0} colorBar="#0F52BA" colorText="#0F52BA" title='Juros' height={100} />
                   </div>
-                  <div className='bg-white p-4 shadow-md rounded-md'>
-                    <Progress value={totals?.perina} colorBar="#FFAE08" colorText="#FFAE08" title='Inadimplência' height={100} />
+                  <div className='bg-white min-h-[212px] p-4 shadow-md rounded-md'>
+                    <Progress value={totals?.perina?totals?.perina:0} colorBar="#FFAE08" colorText="#FFAE08" title='Inadimplência' height={100} />
                   </div>
                 </div>
                 </>

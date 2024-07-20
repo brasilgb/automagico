@@ -46,7 +46,7 @@ export const AnaliseButton = ({ onclick, label, active, title }: ButtonsProps) =
                 color: active ? auth.settings?.buttonanalisetextactive ? auth.settings?.buttonanalisetextactive : '#FFFFFF' : auth.settings?.buttonanalisetext ? auth.settings?.buttonanalisetext : '#FFFFFF'
             }}
             onClick={onclick}
-            className={`px-3 py-1.5 w-48 text-xs uppercase font-bold shadow border border-white rounded-md transition-colors duration-300`}
+            className={`px-3 py-1.5 w-48 text-xs uppercase font-bold shadow border-2 border-gray-50 rounded-md transition-colors duration-300`}
             title={title}>
             {label}
         </button>

@@ -55,7 +55,7 @@ const DatePickerSingle = (props: DatePickerProps) => {
                 className="text-sm p-1 font-bold bg-gray-50 rounded-md shadow-md border border-white text-gray-500 mr-1 cursor-pointer">
                 <IoHome size={22} />
             </Link> */}
-            <div className="text-sm p-1 font-bold bg-gray-50 rounded-md shadow-md border border-white text-gray-500 mr-1 cursor-pointer">
+            <div className="text-sm p-1 font-bold bg-gray-50 rounded shadow border-2 border-white text-gray-500 mr-1 cursor-pointer">
                 <IoReload size={22} onClick={() => handleSelectedDay()} />
             </div>
             <DatePicker
@@ -63,7 +63,7 @@ const DatePickerSingle = (props: DatePickerProps) => {
                 onChange={setSelectedDay}
                 inputPlaceholder={`${moment(dataFiltro).format("DD/MM/YYYY")}`} // placeholder
                 formatInputText={formatInputValue} // format value
-                inputClassName="w-32 !text-sm !font-bold !bg-gray-50 !rounded-md !shadow-md !border !border-white !text-gray-500" // custom class
+                inputClassName="w-32 !text-sm !font-bold !bg-gray-50 !rounded !shadow !border-2 !border-white !text-gray-500" // custom class
                 calendarClassName="responsive-calendar"
                 shouldHighlightWeekends
                 locale={CustomLocale}
