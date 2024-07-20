@@ -56,7 +56,7 @@ export const AnaliseButton = ({ onclick, label, active, title }: ButtonsProps) =
 export const FilialButton = ({ url, label, title }: ButtonsProps) => {
     return (
         <Link
-            className="flex items-center justify-center bg-cyan-700 hover:bg-cyan-600 py-1.5 px-3 rounded-md shadow text-gray-50 self-end"
+            className="flex items-center justify-center bg-cyan-700 hover:bg-cyan-700/90 transition-colors duration-300 py-1.5 px-3 rounded-md shadow border-2 border-gray-50 text-gray-50 self-end"
             href={url}
             as="button"
             type="button"
@@ -72,7 +72,7 @@ export const AddButton = ({ url, label, title }: ButtonsProps) => {
     const { auth } = usePage().props as any;
     return (
         <Link
-            className={`flex items-center justify-center ${auth.user.company_id === null ? 'bg-blue-700 hover:bg-blue-600' : 'bg-blue-700/50'} py-1.5 px-3 rounded-md shadow text-gray-50 self-end`}
+            className={`flex items-center justify-center transition-colors duration-300 ${auth.user.company_id === null ? 'bg-blue-700 hover:bg-blue-700/90' : 'bg-blue-700/50'} py-1.5 px-3 rounded-md shadow border-2 border-gray-50 text-gray-50 self-end`}
             href={url}
             as="button"
             type="button"
@@ -88,7 +88,7 @@ export const AddButton = ({ url, label, title }: ButtonsProps) => {
 export const BackButton = ({ url, label, title }: ButtonsProps) => {
     return (
         <Link
-            className="flex items-center justify-center bg-blue-700 hover:bg-blue-600 py-1.5 px-3 rounded-md shadow text-gray-50 self-end"
+            className="flex items-center justify-center bg-blue-700 hover:bg-blue-700/90 transition-colors duration-300 py-1.5 px-3 rounded-md shadow border-2 border-gray-50 text-gray-50 self-end"
             href={url}
             as="button"
             type="button"
@@ -103,7 +103,7 @@ export const BackButton = ({ url, label, title }: ButtonsProps) => {
 export const EditButton = ({ url, param, title }: ButtonsProps) => {
     return (
         <Link
-            className="flex items-center justify-center bg-orange-600 hover:bg-orange-500 py-1.5 px-3 rounded-md shadow text-gray-50 self-end"
+            className="flex items-center justify-center bg-orange-600 hover:bg-orange-600/90 transition-colors duration-300 py-1.5 px-3 rounded-md shadow border-2 border-gray-50 text-gray-50 self-end"
             href={url}
             as="button"
             type="button"
@@ -158,7 +158,7 @@ export const DeleteButton = ({ identify, param, url, title }: ButtonsProps) => {
                     <div className="flex items-center justify-end gap-3 p-3 mt-2">
                         <button
                             onClick={() => setShowConfirme(false)}
-                            className="py-2 px-3 flex-1 bg-zinc-600 hover:bg-zinc-700 rounded-md"
+                            className="py-2 px-3 flex-1 bg-zinc-600 hover:bg-zinc-600/90 transition-colors duration-300 rounded-md shadow border-2 border-gray-50"
                         >
                             <span className="text-sm text-gray-50">
                                 Cancelar
@@ -166,7 +166,7 @@ export const DeleteButton = ({ identify, param, url, title }: ButtonsProps) => {
                         </button>
                         <button
                             onClick={onsubmit}
-                            className="py-2 px-3 flex-1 bg-red-500 hover:bg-red-600 rounded-md"
+                            className="py-2 px-3 flex-1 bg-red-500 hover:bg-red-500/90 transition-colors duration-300 rounded-md shadow border-2 border-gray-50"
                         >
                             <span className="text-sm text-gray-50">
                                 Excluir
@@ -182,7 +182,7 @@ export const DeleteButton = ({ identify, param, url, title }: ButtonsProps) => {
         <>
             {showConfirme && <ModalDelete />}
             <button
-                className={`flex items-center justify-center ${auth.user.company_id === null ? 'bg-red-600 hover:bg-red-500' : 'bg-red-600/50'} py-1.5 px-3 rounded-md shadow text-gray-50 self-end`}
+                className={`flex items-center justify-center transition-colors duration-300 ${auth.user.company_id === null ? 'bg-red-600 hover:bg-red-600/90' : 'bg-red-600/50'} py-1.5 px-3 rounded-md shadow border-2 border-gray-50 text-gray-50 self-end`}
                 onClick={() => setShowConfirme(true)}
                 title={title}
                 disabled={auth.user.company_id === null ? false : true}
@@ -198,7 +198,7 @@ export const ResetStylesButton = ({ processing, value = "Limpar estilos", title 
     return (
         <div className="flex justify-end">
             <button
-                className="flex items-center justify-center bg-orange-600 hover:bg-orange-600/90 transition-colors duration-300 py-1.5 px-3 rounded-md shadow text-gray-50 self-end"
+                className="flex items-center justify-center bg-orange-600 hover:bg-orange-600/90 transition-colors duration-300 py-1.5 px-3 rounded-md shadow border-2 border-gray-50 text-gray-50 self-end"
                 disabled={processing}
                 type="reset"
                 title={title}
@@ -214,7 +214,7 @@ export const SaveButton = ({ processing, value = "Salvar", title }: ButtonsProps
     return (
         <div className="flex justify-end">
             <button
-                className="flex items-center justify-center bg-blue-700 hover:bg-blue-700/90 transition-colors duration-300 py-1.5 px-3 rounded-md shadow text-gray-50 self-end"
+                className="flex items-center justify-center bg-blue-700 hover:bg-blue-700/90 transition-colors duration-300 py-1.5 px-3 rounded-md shadow border-2 border-gray-50 text-gray-50 self-end"
                 disabled={processing}
                 type="submit"
                 title={title}
@@ -269,7 +269,7 @@ export const DBButton = ({ identify, param, title }: ButtonsProps) => {
                     <div className="flex items-center justify-end gap-3 p-3 mt-2">
                         <button
                             onClick={() => setShowConfirme(false)}
-                            className="py-2 px-3 flex-1 bg-zinc-600 hover:bg-zinc-700 rounded-md"
+                            className="py-2 px-3 flex-1 bg-zinc-600 hover:bg-zinc-600/90 transition-colors duration-300 rounded-md shadow border-2 border-gray-50"
                         >
                             <span className="text-sm text-gray-50">
                                 Cancelar
@@ -277,7 +277,7 @@ export const DBButton = ({ identify, param, title }: ButtonsProps) => {
                         </button>
                         <button
                             onClick={onsubmit}
-                            className="py-2 px-3 flex-1 bg-red-500 hover:bg-red-600 rounded-md"
+                            className="py-2 px-3 flex-1 bg-red-500 hover:bg-red-500/90 transition-colors duration-300 rounded-md shadow border-2 border-gray-50"
                         >
                             <span className="text-sm text-gray-50">
                                 Excluir
@@ -294,7 +294,7 @@ export const DBButton = ({ identify, param, title }: ButtonsProps) => {
             {showConfirme && <ModalDelete />}
             <div className="flex justify-end">
                 <button
-                    className={`flex items-center justify-center bg-red-600 hover:bg-red-500 py-1.5 px-3 rounded-md shadow text-gray-50 self-end`}
+                    className={`flex items-center justify-center bg-red-600 hover:bg-red-600/90 transition-colors duration-300 py-1.5 px-3 rounded-md shadow border-2 border-gray-50 text-gray-50 self-end`}
                     onClick={() => setShowConfirme(true)}
                     title={title}
                 >

@@ -16,9 +16,15 @@ class OrganizationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $organizations = Organization::with('company')->orderBy('id', 'DESC')->paginate(12);
+        $search = $request->get('q');
+        $query = Organization::with('company')->orderBy('id', 'DESC');
+        if ($search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+
+        $organizations = $query->paginate(12)->withQueryString();;
         return Inertia::render('Organization/index', ['organizations' => $organizations]);
     }
 

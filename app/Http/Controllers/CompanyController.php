@@ -23,14 +23,14 @@ class CompanyController extends Controller
         
         $query = Company::with('organization')->orderBy('id', 'DESC');
         if ($search) {
-            $query->where('corpreason', 'like', '%' . $search . '%')
+            $query->where('subname', 'like', '%' . $search . '%')
             ->orWhere('cnpj', 'like', '%' . $search . '%');
         }
         if($org) {
             $query->Where('organization_id', $org);
         }
 
-        $companies = $query->paginate(12);
+        $companies = $query->paginate(12)->withQueryString();
         return Inertia::render('Company/index', ['companies' => $companies]);
     }
 

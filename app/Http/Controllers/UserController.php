@@ -23,7 +23,6 @@ class UserController extends Controller
     public function index(Request $request)
     { 
         $users = Auth::user();
-        // dd(Auth::user());
         $search = $request->get('q');
         if ($users->organization_id) {
             if($users->roles === 'admin'){
@@ -39,7 +38,7 @@ class UserController extends Controller
             $query->where('name', 'like', '%' . $search . '%');
         }
 
-        $users = $query->paginate(12);
+        $users = $query->paginate(12)->withQueryString();
         return Inertia::render('User/index', ['users' => $users]);
     }
 
