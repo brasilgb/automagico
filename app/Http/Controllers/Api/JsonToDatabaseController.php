@@ -54,7 +54,7 @@ class JsonToDatabaseController extends Controller
             foreach ($request->dbdata as $dbdata) {
                 $dataven[] = [
                     "organization_id" => $compop->first()->organization_id,
-                    "id" => $compop->first()->organization_id . $dbdata['resumo_codfil'] . $dbdata['resumo_cnpj'] . $dbdata['resumo_datmvt'],
+                    "id" => $compop->first()->organization_id . intval($dbdata['resumo_codfil']) . $dbdata['resumo_cnpj'] . $dbdata['resumo_datmvt'],
                     "cnpj" => $dbdata['resumo_cnpj'],
                     "filial" => $dbdata['resumo_codfil'],
                     "descfilial" => $dbdata['resumo_desfil'],
@@ -76,7 +76,7 @@ class JsonToDatabaseController extends Controller
                     return $this->responseInsert('venda');
                 } else {
                     foreach ($request->dbdata as $dbdata) {
-                        Sale::where('id', $compop->first()->organization_id . $dbdata['resumo_codfil'] . $dbdata['resumo_cnpj'] . $dbdata['resumo_datmvt'])->delete();
+                        Sale::where('id', $compop->first()->organization_id . intval($dbdata['resumo_codfil']) . $dbdata['resumo_cnpj'] . $dbdata['resumo_datmvt'])->delete();
                     }
                     Sale::insert($dataven);
                     return $this->responseUpdate('venda');
@@ -90,7 +90,7 @@ class JsonToDatabaseController extends Controller
             foreach ($request->dbdata as $dbdata) {
                 $datass[] = [
                     "organization_id" => $compop->first()->organization_id,
-                    "id" => $compop->first()->organization_id . $dbdata['assoc_filial'] . $dbdata['assoc_cnpj'] . $dbdata['assoc_datmvt'] . $dbdata['assoc_ass'],
+                    "id" => $compop->first()->organization_id . intval($dbdata['assoc_filial']) . $dbdata['assoc_cnpj'] . $dbdata['assoc_datmvt'] . $dbdata['assoc_ass'],
                     "cnpj" => $dbdata['assoc_cnpj'],
                     "filial" => $dbdata['assoc_filial'],
                     "dtvenda" => $dbdata['assoc_datmvt'],
@@ -112,7 +112,7 @@ class JsonToDatabaseController extends Controller
                     return $this->responseInsert('associação');
                 } else {
                     foreach ($request->dbdata as $dbdata) {
-                        Association::where('id', $compop->first()->organization_id . $dbdata['assoc_filial'] . $dbdata['assoc_cnpj'] . $dbdata['assoc_datmvt'] . $dbdata['assoc_ass'])->delete();
+                        Association::where('id', $compop->first()->organization_id . intval($dbdata['assoc_filial']) . $dbdata['assoc_cnpj'] . $dbdata['assoc_datmvt'] . $dbdata['assoc_ass'])->delete();
                     }
                     Association::insert($datass);
                     return $this->responseUpdate('associação');
@@ -126,7 +126,7 @@ class JsonToDatabaseController extends Controller
             foreach ($request->dbdata as $dbdata) {
                 $datatot[] = [
                     "organization_id" => $compop->first()->organization_id,
-                    "id" => $compop->first()->organization_id . $dbdata['total_filial'] . $dbdata['total_cnpj'] . $dbdata['total_datatu'],
+                    "id" => $compop->first()->organization_id . intval($dbdata['total_filial']) . $dbdata['total_cnpj'] . $dbdata['total_datatu'],
                     "cnpj" => $dbdata['total_cnpj'],
                     "filial" => $dbdata['total_filial'],
                     "datatu" => $dbdata['total_datatu'],
@@ -152,7 +152,7 @@ class JsonToDatabaseController extends Controller
                     return $this->responseInsert('total');
                 } else {
                     foreach ($request->dbdata as $dbdata) {
-                        Total::where('id', $compop->first()->organization_id . $dbdata['total_filial'] . $dbdata['total_cnpj'] . $dbdata['total_datatu'])->delete();
+                        Total::where('id', $compop->first()->organization_id . intval($dbdata['total_filial']) . $dbdata['total_cnpj'] . $dbdata['total_datatu'])->delete();
                     }
                     Total::insert($datatot);
                     return $this->responseUpdate('total');
