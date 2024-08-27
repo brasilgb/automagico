@@ -43,7 +43,9 @@ class OrganizationController extends Controller
     {
         $data = $request->all();
         $messages = [
-            'required' => 'A :attribute deve ser preenchida!'
+            'required' => 'A :attribute deve ser preenchida!',
+            'cnpj' => 'CNPJ inválido',
+            'unique' => 'CNPJ já está em uso',
         ];
         $request->validate(
             [
@@ -84,11 +86,14 @@ class OrganizationController extends Controller
     {
         $data = $request->all();
         $messages = [
-            'required' => 'A :attribute deve ser preenchida!'
+            'required' => 'A :attribute deve ser preenchida!',
+            'cnpj' => 'CNPJ inválido',
+            'unique' => 'CNPJ já está em uso',
         ];
         $request->validate(
             [
-                'name' => 'required'
+                'name' => 'required',
+                'cnpj' => 'required|cnpj|unique:organizations',
             ],
             $messages,
             [

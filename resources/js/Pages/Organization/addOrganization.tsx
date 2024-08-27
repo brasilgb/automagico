@@ -3,6 +3,7 @@ import { Card, CardBody, CardContainer, CardFooter, CardHeader, CardHeaderConten
 import { BreadCrumbTop, HeaderContent, TitleTop } from '@/Components/PageTop'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { statusClient } from '@/Utils/dataSelect'
+import { maskCpfCnpj } from '@/Utils/mask'
 import { Head, useForm } from '@inertiajs/react'
 import { SlOrganization } from 'react-icons/sl'
 
@@ -10,6 +11,7 @@ const AddOrganization = () => {
 
   const { data, setData, post, progress, processing, errors } = useForm({
     name: "",
+    cnpj: "",
     status: "waiting"
   });
 
@@ -47,7 +49,7 @@ const AddOrganization = () => {
             <form onSubmit={handleSubmit} autoComplete="off">
               <CardBody className=" border-y border-gray-100">
                 <div className="px-3 my-4">
-                  <div className="grid md:grid-cols-3 gap-4 mt-4">
+                  <div className="grid md:grid-cols-4 gap-4 mt-4">
                     <div className="flex flex-col col-span-2">
                       <label
                         className="label-form"
@@ -73,6 +75,31 @@ const AddOrganization = () => {
                         </div>
                       )}
                     </div>
+
+                    <div className="flex flex-col">
+                      <label
+                        className="label-form"
+                        htmlFor="cnpj"
+                      >
+                        CNPJ
+                      </label>
+                      <input
+                        id="cnpj"
+                        type="text"
+                        value={maskCpfCnpj(data.cnpj)}
+                        onChange={(e) =>
+                          setData("cnpj", e.target.value)
+                        }
+                        className="input-form"
+                        maxLength={18}
+                      />
+                      {errors.cnpj && (
+                        <div className="text-sm text-red-500">
+                          {errors.cnpj}
+                        </div>
+                      )}
+                    </div>
+
                     <div className="flex flex-col">
                       <label
                         className="label-form"
@@ -91,7 +118,7 @@ const AddOrganization = () => {
                         }}
                         className="input-form"
                       >
-                        {statusClient.map((status:any) => (
+                        {statusClient.map((status: any) => (
                           <option value={status.value}>{status.label}</option>
                         ))}
                       </select>

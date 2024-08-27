@@ -4,6 +4,7 @@ import FlashMessage from '@/Components/FlashMessage'
 import { BreadCrumbTop, HeaderContent, TitleTop } from '@/Components/PageTop'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { statusClient } from '@/Utils/dataSelect'
+import { maskCpfCnpj } from '@/Utils/mask'
 import { Head, useForm, usePage } from '@inertiajs/react'
 import { SlOrganization } from 'react-icons/sl'
 
@@ -12,6 +13,7 @@ const EditOrganization = ({ organization }: any) => {
 
   const { data, setData, patch, progress, processing, errors } = useForm({
     name: organization.name,
+    cnpj: organization.cnpj,
     status: organization.status
   });
 
@@ -76,6 +78,31 @@ const EditOrganization = ({ organization }: any) => {
                         </div>
                       )}
                     </div>
+
+                    <div className="flex flex-col">
+                      <label
+                        className="label-form"
+                        htmlFor="cnpj"
+                      >
+                        CNPJ
+                      </label>
+                      <input
+                        id="cnpj"
+                        type="text"
+                        value={maskCpfCnpj(data.cnpj)}
+                        onChange={(e) =>
+                          setData("cnpj", e.target.value)
+                        }
+                        className="input-form"
+                        maxLength={18}
+                      />
+                      {errors.cnpj && (
+                        <div className="text-sm text-red-500">
+                          {errors.cnpj}
+                        </div>
+                      )}
+                    </div>
+
                     <div className="flex flex-col">
                       <label
                         className="label-form"
