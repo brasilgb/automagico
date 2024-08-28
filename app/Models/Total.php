@@ -14,8 +14,9 @@ class Total extends Model
     protected $fillable = [
         'organization_id',
         'company_id',
-        'key',
+        'id',
         'cnpj',
+        'filial',
         'datatu',
         'valdev',
         'valven',

@@ -24,16 +24,17 @@ const FiliaisSelector = ({data}: FiliaisProps) => {
     }
 
     return (
-        <div className='w-52 rounded-md bg-gray-50'>
+        <div className='md:w-60 w-52 rounded-md bg-gray-50'>
             {companyUser !== null
-                ? <div className='rounded-md p-1 border-none w-full text-base text-gray-500 font-medium'>{onlyOneFilial[0]?.subname}</div>
+                ? <div className='rounded-md p-1 border-none w-full text-base text-gray-500 font-sans'>{onlyOneFilial[0]?.subname}</div>
                 : <select
-                    className='rounded p-1 border-2 border-white shadow w-full text-base text-gray-500 font-medium'
+                    className='rounded p-1 border-2 border-white shadow w-full text-base text-gray-500 font-sans'
                     name="filial"
                     id="filial"
                     value={filialAnalise}
                     onChange={(e: any) => handleDataByFilial(e.target.value)}
                 >
+                    <option value="0">Análise rede</option>
                     {data?.map((filial: any, idx: number) => (
                         <option key={idx} value={filial.subnumber}>{filial.subname}</option>
                     ))}

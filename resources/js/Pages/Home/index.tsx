@@ -73,20 +73,20 @@ const Home = ({ companies }: any) => {
                 }
               </div>
               {!totals &&
-                <div className="bg-cyan-600 text-white flex items-center justify-start rounded-md shadow-sm md:mt-4 mt-2 py-2 px-3">
+                <div className="bg-cyan-600 text-white flex items-center justify-start rounded-md shadow-sm md:mt-2 mt-2 py-2 px-3">
                   <IoInformationCircle size={25} /><span className="text-sm ml-2">Não há dados a serem mostrados no momento</span>
                 </div>
               }
               {totals &&
               <>
-                <div className="grid md:gap-4 gap-2 md:grid-cols-4 grid-cols-2 md:mt-4 mt-2">
+                <div className="grid md:gap-2 gap-2 md:grid-cols-4 grid-cols-2 md:mt-2 mt-2">
                   <Kpi icon={<AiOutlineLineChart />} iconcolor="text-blue-700" title="Meta" value={MoneyptBR(totals?.valmeta)} bgcolor="bg-blue-200" textcolor="text-blue-700" />
                   <Kpi icon={<GiPayMoney />} iconcolor="text-green-700" title="Faturamento" value={MoneyptBR(totals?.valven)} bgcolor="bg-green-200" textcolor="text-green-700" />
                   <Kpi icon={<FaMoneyBillTrendUp />} iconcolor="text-yellow-700" title="Val. Juros" value={MoneyptBR(totals?.valjur)} bgcolor="bg-green-200" textcolor="text-green-700" />
                   <Kpi icon={<FaMoneyBillTrendUp />} iconcolor="text-yellow-700" title="Val. Ina." value={MoneyptBR(totals?.valina)} bgcolor="bg-green-200" textcolor="text-green-700" />
                 </div>
               
-                <div className="grid md:gap-4 gap-2 md:grid-cols-4 grid-cols-2 md:mt-4 mt-2">
+                <div className="grid md:gap-2 gap-2 md:grid-cols-4 grid-cols-2 md:mt-2 mt-2">
                   <div className='bg-white min-h-[212px] p-4 shadow-md rounded-md'>
                     <Progress value={totals?.permet?totals?.permet:0} colorBar="#FF5003" colorText="#FF5003" title='Meta' height={100} />
                   </div>
@@ -103,7 +103,7 @@ const Home = ({ companies }: any) => {
                 </>
               }
               {graficoVendas &&
-                <div className="md:mt-4 mt-2 p-2 flex flex-col bg-white rounded-md shadow-md">
+                <div className="md:mt-2 mt-2 p-2 flex flex-col bg-white rounded-md shadow-md">
                   <CHFaturamento data={graficoVendas} />
                 </div>
               }

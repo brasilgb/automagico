@@ -9,6 +9,7 @@ use App\Models\Settings;
 use App\Models\Total;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
 class OrganizationController extends Controller
@@ -49,7 +50,8 @@ class OrganizationController extends Controller
         ];
         $request->validate(
             [
-                'name' => 'required'
+                'name' => 'required',
+                'cnpj' => 'required|cnpj|unique:organizations'
             ],
             $messages,
             [
@@ -93,7 +95,7 @@ class OrganizationController extends Controller
         $request->validate(
             [
                 'name' => 'required',
-                'cnpj' => 'required|cnpj|unique:organizations',
+                'cnpj' => ['required', Rule::unique('organizations')->ignore($organization->id), 'cnpj'],
             ],
             $messages,
             [

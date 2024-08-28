@@ -3,7 +3,7 @@ import { Card, CardBody, CardContainer, CardFooter, CardHeader, CardHeaderConten
 import { BreadCrumbTop, HeaderContent, TitleTop } from '@/Components/PageTop'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { statusClient } from '@/Utils/dataSelect'
-import { maskCpfCnpj } from '@/Utils/mask'
+import { maskCpfCnpj, unMask } from '@/Utils/mask'
 import { Head, useForm } from '@inertiajs/react'
 import { SlOrganization } from 'react-icons/sl'
 
@@ -14,7 +14,10 @@ const AddOrganization = () => {
     cnpj: "",
     status: "waiting"
   });
-
+  if (data?.cnpj !== "") {
+    const mcnpj: any = unMask(data?.cnpj)
+    setData((data) => ({ ...data, cnpj: mcnpj }));
+  }
   function handleSubmit(e: any) {
     e.preventDefault();
     post(route("organizations.store"));

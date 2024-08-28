@@ -9,7 +9,7 @@ interface PageTopProps {
 
 export const HeaderContent = ({ children, className }: PageTopProps) => {
     return (
-        <section className={`flex md:flex-row md:items-center  md:justify-between flex-col items-start justify-center mb-4 gap-2 ${className}`}>
+        <section className={`flex md:flex-row md:items-center  md:justify-between flex-col items-start justify-center mb-2 gap-2 ${className}`}>
             {children}
         </section>
     );

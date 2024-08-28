@@ -7,7 +7,7 @@ const Footer = () => {
     <footer 
     style={{ backgroundColor: auth.settings?.footerbg ? auth.settings?.footerbg : '#f9fafb', color: auth.settings?.footertext ? auth.settings?.footertext : '#6b7280' }} 
         className="md:h-8 h-12 flex items-center">
-      <div className="container mx-auto px-4">
+      <div className="px-4 w-full">
         <div className="md:mx-4 flex md:flex-row flex-col md:justify-between">
           <div className=" md:md:w-auto md:text-left w-full text-center text-xs">
             {moment().format('YYYY')}&copy; - Empresa . Todos os direitos reservados.

@@ -20,18 +20,18 @@ const Invoicing = ({ companies }: any) => {
       <Card>
         <HeaderContent>
           <div className="flex flex-col w-full">
-            <div 
-            style={{ backgroundColor: auth.settings?.secundarybarbg ? auth.settings?.secundarybarbg : '#749324', color: auth.settings?.secundarybartext ? auth.settings?.secundarybartext : '#FFFFFF' }}
-            className="flex gap-2 items-center justify-auto p-1 rounded shadow border-gray-300/80 w-full">
+            <div
+              style={{ backgroundColor: auth.settings?.secundarybarbg ? auth.settings?.secundarybarbg : '#749324', color: auth.settings?.secundarybartext ? auth.settings?.secundarybartext : '#FFFFFF' }}
+              className="flex gap-2 items-center justify-auto p-1 rounded shadow border-gray-300/80 w-full">
               <DatePickerSingle route='faturamento' />
               <FiliaisSelector data={companies} />
               {auth.user.company_id === null &&
                 <AnaliseRede />
               }
             </div>
-            <div 
-            style={{ backgroundColor: auth.settings?.analisebg ? auth.settings?.analisebg : '#FFFFFF', color: auth.settings?.analisetext ? auth.settings?.analisetext : '#749324' }}
-            className="flex md:items-center items-start justify-start md:flex-1 p-1 md:gap-6 gap-2 w-full overflow-x-auto bg-gray-100 mt-2 rounded-md shadow">
+            <div
+              style={{ backgroundColor: auth.settings?.analisebg ? auth.settings?.analisebg : '#FFFFFF', color: auth.settings?.analisetext ? auth.settings?.analisetext : '#749324' }}
+              className="flex md:items-center items-start justify-start md:flex-1 p-1 md:gap-2 gap-2 w-full overflow-x-auto bg-gray-100 mt-2 rounded-md shadow">
               <AnaliseButton label="Faturamento" onclick={() => setAlteredAnalise('faturamento')} active={alteredAnalise === 'faturamento' ? true : false} />
               <AnaliseButton label="Associação" onclick={() => setAlteredAnalise('associacao')} active={alteredAnalise === 'associacao' ? true : false} />
             </div>

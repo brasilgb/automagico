@@ -7,6 +7,7 @@ import Pagination from '@/Components/Pagination'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/Components/Table'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { statusValueByLabel } from '@/Utils/functions'
+import { maskCpfCnpj } from "@/Utils/mask"
 import { Head, usePage } from '@inertiajs/react'
 import moment from 'moment'
 import React, { Fragment, useState } from 'react'
@@ -59,6 +60,7 @@ const Organization = ({ organizations }: any) => {
                             <TableHeader>
                                 <TableRow>
                                     <TableHead><div className="">Organização</div></TableHead>
+                                    <TableHead>CNPJ</TableHead>
                                     <TableHead>Filiais</TableHead>
                                     <TableHead>Cadastro</TableHead>
                                     <TableHead>Status</TableHead>
@@ -71,6 +73,9 @@ const Organization = ({ organizations }: any) => {
                                         <TableRow className={`${idx % 2 === 0 ? 'bg-gray-50' : 'bg-gray-100'}`}>
                                             <TableCell className="">
                                                 {organization.name}
+                                            </TableCell>
+                                            <TableCell className="">
+                                                {maskCpfCnpj(organization.cnpj)}
                                             </TableCell>
                                             <TableCell>
                                                 {organization.company.length}

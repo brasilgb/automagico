@@ -16,8 +16,8 @@ const Header = () => {
     return (
         <header
             style={{ backgroundColor: auth.settings?.headerbg ? auth.settings?.headerbg : '#FFFFFF', color: auth.settings?.headertext ? auth.settings?.headertext : '#FFFFFF' }}
-            className='flex items-center justify-between h-14 px-4 shadow-sm  sticky top-0 z-40'>
-            <div className="container mx-auto flex items-center justify-between">
+            className='flex items-center justify-between h-14 px-2 shadow-sm  sticky top-0 z-40'>
+            <div className="flex items-center justify-between w-full">
                 <div className="mr-8">
                     <Link
                         href={route('dashboard')}

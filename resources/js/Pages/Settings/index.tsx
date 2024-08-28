@@ -112,13 +112,6 @@ const Settings = ({ settings }: any) => {
         <AuthenticatedLayout>
             <Head title="Configurações" />
             <Card>
-                <HeaderContent>
-                    <TitleTop>
-                        <MdOutlineTune size={30} />
-                        <span className="ml-2">Configurações</span>
-                    </TitleTop>
-                    <BreadCrumbTop links={[{ url: null, label: "Configurações" }]} />
-                </HeaderContent>
                 <CardContainer className='bg-white pt-1'>
                     <FlashMessage message={flash} />
                     <form onSubmit={handleSubmit} onReset={handleReset} autoComplete="off">

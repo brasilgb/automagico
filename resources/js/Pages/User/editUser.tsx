@@ -54,18 +54,6 @@ const editUser = ({user, organizations}: any) => {
       <Head title="Dashboard" />
       <main className=''>
         <Card>
-          <HeaderContent>
-            <TitleTop>
-              <IoPeopleSharp size={30} />
-              <span className="ml-2">Usuários</span>
-            </TitleTop>
-            <BreadCrumbTop
-              links={[
-                { url: "/users", label: "Usuários" },
-                { url: null, label: "Adicionar usuário" },
-              ]}
-            />
-          </HeaderContent>
           <CardContainer>
           <FlashMessage message={flash} />
             <CardHeader>

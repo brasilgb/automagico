@@ -30,13 +30,6 @@ const User = ({ users }: any) => {
             <Head title="Usuários" />
             <main className=''>
                 <Card>
-                    <HeaderContent>
-                        <TitleTop>
-                            <IoPeopleSharp size={30} />
-                            <span className="ml-2">Usuários</span>
-                        </TitleTop>
-                        <BreadCrumbTop links={[{ url: null, label: "Usuários" }]} />
-                    </HeaderContent>
                     <CardContainer>
                         <CardHeader>
                             <CardHeaderContent>
@@ -115,6 +108,9 @@ const User = ({ users }: any) => {
                             </CardFooter>
                         }
                     </CardContainer>
+                    <CardFooter>
+                        <></>
+                    </CardFooter>
                 </Card>
             </main>
         </AuthenticatedLayout >

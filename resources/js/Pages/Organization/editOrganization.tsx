@@ -4,7 +4,7 @@ import FlashMessage from '@/Components/FlashMessage'
 import { BreadCrumbTop, HeaderContent, TitleTop } from '@/Components/PageTop'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { statusClient } from '@/Utils/dataSelect'
-import { maskCpfCnpj } from '@/Utils/mask'
+import { maskCpfCnpj, unMask } from '@/Utils/mask'
 import { Head, useForm, usePage } from '@inertiajs/react'
 import { SlOrganization } from 'react-icons/sl'
 
@@ -19,6 +19,8 @@ const EditOrganization = ({ organization }: any) => {
 
   function handleSubmit(e: any) {
     e.preventDefault();
+    const mcnpj: any = unMask(data?.cnpj)
+    setData('cnpj', mcnpj);
     patch(route("organizations.update", organization.id));
   }
 
@@ -52,7 +54,7 @@ const EditOrganization = ({ organization }: any) => {
             <form onSubmit={handleSubmit} autoComplete="off">
               <CardBody className=" border-y border-gray-100">
                 <div className="px-3 my-4">
-                  <div className="grid md:grid-cols-3 gap-4 mt-4">
+                  <div className="grid md:grid-cols-4 gap-4 mt-4">
                     <div className="flex flex-col col-span-2">
                       <label
                         className="label-form"
