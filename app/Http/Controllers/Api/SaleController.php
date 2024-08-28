@@ -13,13 +13,14 @@ class SaleController extends Controller
 {
     public function getSales(Request $request)
     {
+
         $wquery = Sale::where('dtvenda', $request->dt)->where('organization_id', $request->org)->where('filial', $request->fl)->first();
         if ($wquery) {
             $sales = Sale::where('dtvenda', $request->dt)->where('organization_id', $request->org)->where('filial', $request->fl)->get();
         } else {
             $lastDate = Sale::where('organization_id', $request->org)->where('filial', $request->fl)->orderBy('dtvenda', 'DESC')->first();
-            if ($lastDate !== null)
-                $sales = Sale::where('anomes', $lastDate->dtvenda)->where('organization_id', $request->org)->where('filial', $request->fl)->get();
+            if ($lastDate !== null) 
+            $sales = Sale::where('dtvenda', $lastDate->dtvenda)->where('organization_id', $request->org)->where('filial', $request->fl)->get();
         }
 
         return response()->json([

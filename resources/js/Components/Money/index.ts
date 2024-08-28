@@ -3,5 +3,5 @@ export const MoneyptBR = (value: any) => {
 }
 
 export const ValuePercent = (value:any) => {
-    return `${parseFloat(isNaN(value)?0:value).toFixed(2)}%`;
+    return `${(parseFloat(isNaN(value)?0:value).toFixed(2)).replace('.',',')}%`;
 }

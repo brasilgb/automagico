@@ -1,15 +1,8 @@
 import apiautomagico from "@/bootstrap";
-import { AnaliseButton } from "@/Components/Buttons";
-import { Card, CardBody } from "@/Components/Card";
-import DatePickerSingle from "@/Components/DatePicker/DatePickerSingle";
-import FiliaisSelector from "@/Components/FiliaisSelector";
 import { MoneyptBR, ValuePercent } from "@/Components/Money";
-import { HeaderContent } from "@/Components/PageTop";
-import Pagination from "@/Components/Pagination";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/Components/Table";
 import { useAuthContext } from "@/Contexts";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, router, usePage } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 import moment from "moment";
 import React, { useEffect, useState } from 'react'
 import { IoInformationCircle } from "react-icons/io5";
@@ -20,8 +13,6 @@ const Association = () => {
   const { auth } = usePage().props as any;
   const { dataFiltro, filialAnalise, loading, setLoading } = useAuthContext();
   const [autoMagicoAssociation, setAutoMagicoAssociation] = useState<any>([]);
-  const [pagination, setPagination] = useState<any>([]);
-
 
   useEffect(() => {
     const getAutoMagicoAssociation = async () => {
@@ -58,8 +49,8 @@ const Association = () => {
           <TableHeader>
             {autoMagicoAssociation.filter((total: any) => (total.assoc === 'XX')).map((assoc: any, idx: number) => (
               <TableRow className={`${idx % 2 === 0 ? 'bg-gray-50' : 'bg-gray-100'}`}>
-                <TableHead></TableHead>
                 <TableHead>{assoc.descassoc}</TableHead>
+                <TableHead>-</TableHead>
                 <TableHead>{moment(assoc.dtvenda).format("DD/MM/YYYY")}</TableHead>
                 <TableHead>{MoneyptBR(assoc.valmeta)}</TableHead>
                 <TableHead>{MoneyptBR(assoc.valvenda)}</TableHead>

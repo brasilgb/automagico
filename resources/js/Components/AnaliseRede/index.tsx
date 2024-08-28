@@ -22,7 +22,7 @@ const AnaliseRede = () => {
                     className="bg-gray-50 text-gray-500 flex items-center gap-2 rounded px-3 py-1 border-2 border-white hover:bg-gray-50/80 shadow-md transition-colors duration-300"
                 >
                     <PiStorefrontBold size={20} />
-                    <span className="font-medium hidden md:block">Analise da Filial</span>
+                    <span className="font-medium hidden md:block">Analise por Filial</span>
                 </button>
             }
         </>
