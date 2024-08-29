@@ -9,7 +9,7 @@ interface TableProps {
 
 export const Table = ({ children, className }: TableProps) => {
     return (
-        <table className={`table-auto ${className} text-sm`}>
+        <table className={`table-auto text-nowrap ${className} text-sm`}>
             {children}
         </table>
     );
